@@ -1,0 +1,6 @@
+{
+  "appId": "com.juggers.whereIsMyBus",
+  "appName": "whereIsMyBus",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
