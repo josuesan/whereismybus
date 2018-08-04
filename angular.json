@@ -3,8 +3,8 @@
   "version": 1,
   "defaultProject": "app",
   "projects": {
-    "app": {
-      "root": "",
+    "app": {    
+      "root": "src",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",

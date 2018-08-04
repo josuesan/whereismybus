@@ -11,6 +11,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths":{
+      // Global @whereismybus structure
+      "@whereIsMyBus/components": ["./src/app/@components"],
+      "@whereIsMyBus/pages": ["./src/app/@pages"],
+      "@whereIsMyBus/services": ["./src/app/@services"],
+      "@whereIsMyBus/interfaces": ["./src/app/#interfaces"],
+    },
   }
 }
