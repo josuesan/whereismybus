@@ -5,4 +5,7 @@ export interface Student{
     email:string;
     status:string;
     representative:string;
+    address:string;
+    long:string;
+    lat:string;
 }

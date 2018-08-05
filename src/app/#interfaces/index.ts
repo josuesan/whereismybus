@@ -4,3 +4,4 @@
 
  export { User } from "./user.interface";
  export { Student } from "./student.interface";
+ export { Geolocation } from "./geolocation.interface";

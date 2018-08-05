@@ -33,25 +33,33 @@ export class StudentsService {
      * @param id 
      */
     public async getStudent(id){
-        return await this.afs.collection("users").doc(id).snapshotChanges().pipe(first()).toPromise();
+        return await this.afs.collection("students").doc(id).snapshotChanges().pipe(first()).toPromise();
     }
     /**
      * Function to get one student (Observable mode)
      * @param id 
      */
     public getObsStudent(id){
-        return this.afs.collection("users").doc(id).snapshotChanges();
+        return this.afs.collection("students").doc(id).snapshotChanges();
     }
     /**
      * Function to get all students (Promise mode)
      */
     public async getStudents(){
-        return await this.afs.collection("users").snapshotChanges().pipe(first()).toPromise();
+        return await this.afs.collection("students").snapshotChanges().pipe(first()).toPromise();
     }
     /**
      * Function to get all students (Observable mode)
      */
     public getObsStudents(){
-        return this.afs.collection("users").snapshotChanges();
+        return this.afs.collection("students").snapshotChanges();
+    }
+
+    /**
+     * Function to change the status of student (aboard, arrived, absent )
+     * @param id 
+     */
+    public async changeStateStudent(id){
+        return await this.afs.collection("students").doc(id).update({uid:id});
     }
 }
