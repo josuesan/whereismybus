@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { first } from 'rxjs/operators';
-import { User } from '@whereIsMyBus/interfaces';
+import { User } from '../#interfaces';
 
 @Injectable()
 export class AuthService {

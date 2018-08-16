@@ -1,0 +1,16 @@
+<ion-header >
+    <ion-toolbar class="extended-header">
+        <ion-title class="title-tool">Where's my Bus?</ion-title>
+        <img class="logo" src="assets/leon.jpg" alt="">
+    </ion-toolbar>
+</ion-header>
+  
+<ion-content class="relative">
+    <ion-input class="form-input" type="email" placeholder="Correo electronico" clearInput [(ngModel)]="email"> </ion-input>
+    <ion-input class="form-input" type="password" placeholder="Contraseña" [(ngModel)]="password"></ion-input>
+    <button class="form-btn" ion-button icon-end (click)="login()">Iniciar Sesión<ion-icon name="star"></ion-icon></button>
+    <app-dashboard [userType]="userType"></app-dashboard>
+    <app-navbar [userType]="userType"></app-navbar>
+    <div class="tide"></div>
+</ion-content>
+  

@@ -9,6 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var auth_service_1 = require("./auth.service");
+var students_service_1 = require("./students.service");
+var geolocation_service_1 = require("./geolocation.service");
+var notification_service_1 = require("./notification.service");
 var ServicesModule = /** @class */ (function () {
     function ServicesModule() {
     }
@@ -19,7 +22,10 @@ var ServicesModule = /** @class */ (function () {
             ],
             declarations: [],
             providers: [
-                auth_service_1.AuthService
+                students_service_1.StudentsService,
+                auth_service_1.AuthService,
+                geolocation_service_1.GeolocationService,
+                notification_service_1.NotificationService
             ]
         })
     ], ServicesModule);

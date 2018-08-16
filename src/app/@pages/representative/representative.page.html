@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+        Ionic Blank
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <app-navbar [userType]="userType"></app-navbar>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <p>Foto de representante</p>
+                <img src="assets/leon.jpg" alt="">
+                <button>Subir foto</button>
+            </ion-col>
+            <ion-col size="12">
+                <p>Foto de representado</p>
+                <img src="assets/leon.jpg" alt="">
+                <button>Subir foto</button>
+            </ion-col>
+
+            <ion-col size="12">
+                <input type="text" placeholder="nombre">
+            </ion-col>
+            <ion-col size="12">
+                <ion-list>
+                    <ion-item>
+                        <ion-select [(ngModel)]="status" [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One">         
+                        <ion-select-option *ngFor="let employee of employees" [value]="employee"></ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+            <ion-col size="12">
+                <input type="text" placeholder="telefono">
+            </ion-col>
+            <ion-col size="12">
+                <input type="text" placeholder="correo">
+            </ion-col>
+            <ion-col size="12">
+                <button>Crear</button>
+            </ion-col>
+            <ion-col size="12">
+                <button>cancelar</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

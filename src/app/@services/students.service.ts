@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { first } from 'rxjs/operators';
-import { Student } from '@whereIsMyBus/interfaces';
+import { Student } from '../#interfaces';
 @Injectable()
 export class StudentsService {
     constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore) {}

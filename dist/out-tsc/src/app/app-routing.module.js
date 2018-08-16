@@ -11,6 +11,7 @@ var router_1 = require("@angular/router");
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', loadChildren: './@pages/home/home.module#HomePageModule' },
+    { path: 'login', loadChildren: './@pages/login/login.module#LoginPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

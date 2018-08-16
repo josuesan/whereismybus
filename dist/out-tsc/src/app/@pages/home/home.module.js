@@ -12,7 +12,7 @@ var angular_1 = require("@ionic/angular");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var home_page_1 = require("./home.page");
-var _services_1 = require("../../@services");
+var services_1 = require("@whereismybus/services");
 var HomePageModule = /** @class */ (function () {
     function HomePageModule() {
     }
@@ -28,7 +28,7 @@ var HomePageModule = /** @class */ (function () {
                         component: home_page_1.HomePage
                     }
                 ]),
-                _services_1.ServicesModule
+                services_1.ServicesModule
             ],
             declarations: [home_page_1.HomePage]
         })

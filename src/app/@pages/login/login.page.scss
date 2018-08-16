@@ -1,0 +1,32 @@
+.logo{
+    width: 220px;
+    margin: 0 auto;
+    display: block;
+}
+.form-input{
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+}
+.form-btn{
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+}
+.title-tool{
+    text-align: center;
+    margin-bottom: 16px;
+}
+.tide{
+    width: 100%;
+    height: 30px;
+    background: gray;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+}
+.extended-header{
+    height: 50vh;
+}

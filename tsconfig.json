@@ -15,10 +15,10 @@
     "baseUrl": "./",
     "paths":{
       // Global @whereismybus structure
-      "@whereIsMyBus/components": ["./src/app/@components"],
-      "@whereIsMyBus/pages": ["./src/app/@pages"],
-      "@whereIsMyBus/services": ["./src/app/@services"],
-      "@whereIsMyBus/interfaces": ["./src/app/#interfaces"],
+      "@whereismybus/components": ["./src/app/@components"],
+      "@whereismybus/pages": ["./src/app/@pages"],
+      "@whereismybus/services": ["./src/app/@services"],
+      "@whereismybus/interfaces": ["./src/app/#interfaces"],
     },
   }
 }
