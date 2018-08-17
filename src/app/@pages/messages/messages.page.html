@@ -5,16 +5,16 @@
     </div>
 </ion-header>
 
-<ion-content >
+<ion-content class="bg-gray">
     <app-navbar [userType]="userType"></app-navbar>
-    <button>Limpiar</button>
-    <button>Mensajes predeterminados</button>
+    <button class="btn-msg cta">Limpiar Historial <span><img src="assets/png/wmb_assets_icon_login.png" alt=""></span></button>
+    <button class="btn-msg cta">Mensajes predeterminados <span><img src="assets/png/wmb_assets_icon_login.png" alt=""></span></button>
     <app-message></app-message>
-    <ion-grid >
+    <ion-grid class="write-box no-pd">
         <ion-row align-items-center>
-            <ion-col size="12">
-                <input class="input-msg" type="text" placeholder="escribe aqui">
-                <button><img src="assets/png/wmb_assets_icon_login.png" alt=""></button>
+            <ion-col size="12" class="flex no-pd write-area">
+                <input class="input-msg text" type="text" placeholder="Escribe un mensaje">
+                <button class="btn-write-msg"><img src="assets/svg/icon_send_message.svg" alt=""></button>
             </ion-col>
         </ion-row>
     </ion-grid>

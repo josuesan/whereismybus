@@ -1,0 +1,35 @@
+/*Colors*/
+$orange: #ffa403;
+$black: #332c24;
+$red: #e24905;
+$greenD: #5abe4f;
+$gray: #cecece;
+
+
+
+.card-message{
+    margin: 0 10px;
+
+    .min-text{
+        color: $gray;
+        text-align: right;
+        margin: 0;
+    }
+}
+.profile-photo{
+    border: 1px solid #332c24;
+    border-radius: 100%;
+    width:80%;
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+.card-content {
+    padding: 0 0 10px 0;
+}
+.title{
+    color: $orange;
+}
+.text{
+    color: $gray;
+}
