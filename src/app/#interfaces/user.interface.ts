@@ -3,5 +3,8 @@ export interface User{
     name:string;
     lastname:string;
     email:string;
+    phone:string;
     role:string;
+    student:string;
+    photo:string;
 }
