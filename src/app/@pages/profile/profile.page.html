@@ -11,33 +11,33 @@
         <ion-grid>
             <ion-row align-items-center >
                 <ion-col size="6">
-                    <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
+                    <img class="profile-photo" src="{{user.photo}}" alt="">
                 </ion-col>
                 <ion-col size="5">
-                    <h2 class="title">Josue Sanchez</h2>
+                    <h2 class="title">{{user.name}} {{user.lastname}}</h2>
                 </ion-col>
             </ion-row>
             <ion-row align-items-center > 
                 <ion-col size="6">
                     <h2 class="title" >Representado:</h2>
-                    <p class="subtitle">Josue Sanchez Jr.</p>
+                    <p class="subtitle">{{student.name}} {{student.lastname}}</p>
                 </ion-col>
                 <ion-col size="6">
-                    <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
+                    <img class="profile-photo" src="{{student.photo}}" alt="">
                 </ion-col>
             </ion-row>
             <ion-row> 
                 <ion-col size="12">
                     <h2 class="title">Telefono:</h2>
-                    <p class="subtitle">04124194890</p>
+                    <p class="subtitle">{{user.phone}}</p>
                 </ion-col>
                 <ion-col size="12">
                     <h2 class="title">Correo Electronico:</h2>
-                    <p class="subtitle">j@gmail.com</p>
+                    <p class="subtitle">{{user.email}}</p>
                 </ion-col>
                 <ion-col size="12">
                     <h2 class="title">Direccion:</h2>
-                    <p class="subtitle">Lorem ipsum dolor sit amet consectetur, adip.</p>
+                    <p class="subtitle">{{student.address}}</p>
                 </ion-col>
                 <ion-col size="12">
                         <button class="form-btn cta"><span><img src="assets/svg/wmb_assets_icon_profile.svg" alt=""></span>  Editar perfil</button>
