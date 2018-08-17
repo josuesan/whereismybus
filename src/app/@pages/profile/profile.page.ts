@@ -19,10 +19,10 @@ export class ProfilePage {
         var currentUser = this.authService.getCurrentUser();
         if (currentUser != null) {
             this.authService.getUserData(currentUser.uid).then((data) => {
-                this.user = data.payload.data() as User;
+                if(data.payload.exists) this.user = data.payload.data() as User;
 
                 this.studentService.getStudent(this.user.student).then((data) => {
-                    this.student = data.payload.data() as Student;
+                    if (data.payload.exists) this.student = data.payload.data() as Student;
                 });
             });
         } else this.router.navigate(['']);
