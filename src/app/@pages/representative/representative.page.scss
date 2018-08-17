@@ -1,0 +1,119 @@
+/*Colors*/
+$orange: #ffa403;
+$black: #332c24;
+$red: #e24905;
+$greenD: #5abe4f;
+$gray: #cecece;
+
+
+.header{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 15px;
+    background-color: $orange;
+
+    .title{
+        color: white;
+    }
+    .logo-header{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+        display: block;
+        height: 48px;
+    }
+    
+}
+
+.form-input{
+    display: block;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid $orange;
+    margin: 12px auto;
+    width: 80%;
+    max-width: 360px;  
+}
+.form-select{
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid $orange;
+    margin: 12px auto;
+    width: 80%;
+    max-width: 360px;  
+}
+.list-students{
+    border: none;
+    border-bottom: 1px solid $orange;
+    margin: 12px auto;
+    width: 80%;
+    max-width: 360px;
+}
+.list-students{
+    ion-select{
+        width: 100%;
+        color: $black;
+        ion-select-option{
+            width: 100%;
+            color: $black;
+        }
+    }
+}
+
+
+.profile-photo{
+    border: 1px solid #332c24;
+    border-radius: 100%;
+    width:80%;
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+.text-center{
+    text-align: center;
+}
+.form-btn{
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    color: $red;
+    span{
+        margin-left: 5px;
+        img{
+            vertical-align: middle;
+            height: 80%;
+        }
+    }
+    &:hover{
+        /*background-color: $orange;
+        color: white;*/
+    }
+    
+}
+.title{
+    color: $orange;
+}
+.form-btn-save{
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    color: $greenD;
+    span{
+        margin-left: 5px;
+        img{
+            vertical-align: middle;
+            height: 80%;
+        }
+    }
+    &:hover{
+        /*background-color: $orange;
+        color: white;*/
+    }
+    
+}
