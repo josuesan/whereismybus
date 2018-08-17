@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './@pages/profile/profile.module#ProfilePageModule' },
   { path: 'messages', loadChildren: './@pages/messages/messages.module#MessagesPageModule' },
   { path: 'statestudent', loadChildren: './@pages/stateStudent/stateStudent.module#StateStudentPageModule' },
-  { path: 'representative', loadChildren: './@pages/representaive/representaive.module#RepresentativePageModule' },
+  { path: 'representative', loadChildren: './@pages/representative/representative.module#RepresentativePageModule' },
   { path: 'driver', loadChildren: './@pages/driver/driver.module#DriverPageModule' },
 ];
 

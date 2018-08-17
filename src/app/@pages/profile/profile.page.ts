@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['profile.page.scss'],
 })
 export class ProfilePage {
-    public userType:string = "admin";
+    public userType:string = "representative";
     
     constructor(){
         console.log("holña");

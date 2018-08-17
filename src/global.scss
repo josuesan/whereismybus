@@ -10,3 +10,61 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+//import Fonts
+@import "./fonts.scss";
+
+//Styles General
+*{
+    font-family: "RobotoSlab-Regular";
+}
+//colors
+.grayW{
+    color: #cecece;
+}
+.blueW{
+    color: #54acd3;
+}
+.greenW{
+    color: #73be6e;
+}
+.orangeW{
+    color: #ffa403;
+}
+.green-darkW{
+    color: #5abe4f;
+}
+.redW{
+    color: #e24905;
+}
+.blackW{
+    color: #332c24;
+}
+
+/* Font size */
+
+
+.super-title{
+    font-size: 28px;
+    font-family: "RobotoSlab-Bold";
+}
+.title{
+    font-size: 20px;
+    font-family: "RobotoSlab-Bold";
+}
+.subtitle{
+    font-size: 20px;
+    font-family: "RobotoSlab-Light";
+}
+.text{
+    font-size: 16px;
+    font-family: "RobotoSlab-Regular";
+}
+.cta{
+    font-size: 17px;
+    font-family: "RobotoSlab-Bold";
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    background-color: white !important;
+}

@@ -21,8 +21,8 @@ export class StateComponent {
         subHeader: 'Select your favorite color'
       };
       customPopoverOptions: any = {
-        header: 'Hair Color',
+       /* header: 'Hair Color',
         subHeader: 'Select your hair color',
-        message: 'Only select your dominant hair color'
+        message: 'Only select your dominant hair color'*/
       };
 }

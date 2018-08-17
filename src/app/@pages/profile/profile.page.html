@@ -1,47 +1,49 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+    <div class="header">
+        <ion-title class="title">Mi Perfil</ion-title>
+        <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
+    </div>
 </ion-header>
 
-<ion-content >
+<ion-content class="bg-gray">
     <app-navbar [userType]="userType"></app-navbar>
-    <ion-grid>
-        <ion-row>
-            <ion-col size="6">
-                <img src="assets/leon.jpg" alt="">
-            </ion-col>
-            <ion-col size="6">
-                <h2>Nombre</h2>
-            </ion-col>
-        </ion-row>
-        <ion-row> 
-            <ion-col size="6">
-                <h2>Representado:</h2>
-                <p>nombre</p>
-            </ion-col>
-            <ion-col size="6">
-                <img src="assets/leon.jpg" alt="">
-            </ion-col>
-        </ion-row>
-        <ion-row> 
-            <ion-col size="12">
-                <h2>Telefono:</h2>
-                <p>04124194890</p>
-            </ion-col>
-            <ion-col size="12">
-                <h2>Correo Electronico:</h2>
-                <p>j@gmail.com</p>
-            </ion-col>
-            <ion-col size="12">
-                <h2>Direccion:</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adip.</p>
-            </ion-col>
-            <ion-col size="12">
-                <button>Editar perfil</button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <div class="card-profile">
+        <ion-grid>
+            <ion-row align-items-center >
+                <ion-col size="6">
+                    <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
+                </ion-col>
+                <ion-col size="5">
+                    <h2 class="title">Josue Sanchez</h2>
+                </ion-col>
+            </ion-row>
+            <ion-row align-items-center > 
+                <ion-col size="6">
+                    <h2 class="title" >Representado:</h2>
+                    <p class="subtitle">Josue Sanchez Jr.</p>
+                </ion-col>
+                <ion-col size="6">
+                    <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
+                </ion-col>
+            </ion-row>
+            <ion-row> 
+                <ion-col size="12">
+                    <h2 class="title">Telefono:</h2>
+                    <p class="subtitle">04124194890</p>
+                </ion-col>
+                <ion-col size="12">
+                    <h2 class="title">Correo Electronico:</h2>
+                    <p class="subtitle">j@gmail.com</p>
+                </ion-col>
+                <ion-col size="12">
+                    <h2 class="title">Direccion:</h2>
+                    <p class="subtitle">Lorem ipsum dolor sit amet consectetur, adip.</p>
+                </ion-col>
+                <ion-col size="12">
+                        <button class="form-btn cta"><span><img src="assets/svg/wmb_assets_icon_profile.svg" alt=""></span>  Editar perfil</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    
 </ion-content>

@@ -1,16 +1,24 @@
 <ion-header >
-    <ion-toolbar class="extended-header">
-        <ion-title class="title-tool">Where's my Bus?</ion-title>
-        <img class="logo" src="assets/leon.jpg" alt="">
-    </ion-toolbar>
+    <div class="extended-header">
+        <ion-title class="super-title">Where's my Bus?</ion-title>
+        <img class="logo" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
+    </div>
 </ion-header>
   
 <ion-content class="relative">
-    <ion-input class="form-input" type="email" placeholder="Correo electronico" clearInput [(ngModel)]="email"> </ion-input>
-    <ion-input class="form-input" type="password" placeholder="Contraseña" [(ngModel)]="password"></ion-input>
-    <button class="form-btn" ion-button icon-end (click)="login()">Iniciar Sesión<ion-icon name="star"></ion-icon></button>
-    <app-dashboard [userType]="userType"></app-dashboard>
-    <app-navbar [userType]="userType"></app-navbar>
-    <div class="tide"></div>
+    <ion-grid class="form-init">
+        <ion-row>
+            <ion-col size="12">
+                <input class="form-input" type="email" placeholder="Correo electronico" [(ngModel)]="email">
+            </ion-col>
+            <ion-col size="12">
+                <input class="form-input" type="password" placeholder="Contraseña" [(ngModel)]="password">
+            </ion-col>
+            <ion-col size="12">
+                <button class="form-btn cta" (click)="login()">Iniciar Sesión<span><img src="assets/png/wmb_assets_icon_login.png" alt=""></span> </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class="tide"></div>      
 </ion-content>
   

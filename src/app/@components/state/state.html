@@ -1,20 +1,20 @@
-<ion-card>
+<ion-card class="card-states">
   <ion-card-content>
-        <ion-grid >
-            <ion-row>
-                <ion-col size="2">
-                    <img src="assets/leon.jpg" alt="">
+        <ion-grid>
+            <ion-row align-items-center>
+                <ion-col size="3">
+                    <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
                 </ion-col>
-                <ion-col size="10">
-                    <h2>nombre</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit..</p>
+                <ion-col size="9">
+                    <h2 class="title">Josue Sanchez Jr</h2>
+                    <p class="text"><span>Representante:</span> Josue Sanchez</p>
                     <ion-list>
                         <ion-item>
-                          <ion-select [(ngModel)]="status" [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One">
+                          <ion-select class="cta" [(ngModel)]="status" [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Estado">
                               
-                            <ion-select-option value="ausent">Ausente</ion-select-option>
-                            <ion-select-option value="in">En el transporte</ion-select-option>
-                            <ion-select-option value="arrived">Llego a su hogar</ion-select-option>
+                            <ion-select-option class="cta" value="ausent">Ausente</ion-select-option>
+                            <ion-select-option class="cta" value="in">En el transporte</ion-select-option>
+                            <ion-select-option class="cta" value="arrived">Llego a su hogar</ion-select-option>
                           </ion-select>
                         </ion-item>
                       </ion-list>

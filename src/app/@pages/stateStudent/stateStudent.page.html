@@ -1,12 +1,11 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>
-        Ionic Blank
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="header">
+    <ion-title class="title">Estado de los estudiantes</ion-title>
+    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
+  </div>
+</ion-header>
   
-  <ion-content >
-      <app-navbar [userType]="userType"></app-navbar>
-      <app-state></app-state>
-  </ion-content>
+<ion-content class="bg-gray">
+    <app-navbar [userType]="userType"></app-navbar>
+    <app-state></app-state>
+</ion-content>
