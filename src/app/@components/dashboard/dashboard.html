@@ -67,8 +67,10 @@
                 </ion-col>
             </ion-row>
         </div>
+
+        <div class="separator-tide"></div>
+
         <div (click)="redirect('statestudent')">
-            <div class="separator-tide"></div>
             <ion-row align-items-center>
                 <ion-col size="4">
                     <img class="logo" src="assets/png/wmb_assets_icon_childstatus_onbus.png" alt="">
@@ -78,6 +80,7 @@
                 </ion-col>
             </ion-row>
         </div>
+
         <div class="separator-tide"></div>
     </ion-grid>
     <!--END  Grid for bus driver-->
@@ -86,32 +89,43 @@
 <div *ngIf='type === "admin"' class="bg-white triple">
     <!-- Grid for admin-->
     <ion-grid>
-        <ion-row align-items-center>
-            <ion-col size="4">
-                <img class="logo" src="assets/png/wmb_assets_icon_driver_status.png" alt="">
-            </ion-col>
-            <ion-col size="8">
-                <p class="title">Mensajes del chofer</p>
-            </ion-col>
-        </ion-row>
+        <div (click)="redirect('messages')">
+            <ion-row align-items-center>
+                <ion-col size="4">
+                    <img class="logo" src="assets/png/wmb_assets_icon_driver_status.png" alt="">
+                </ion-col>
+                <ion-col size="8">
+                    <p class="title">Mensajes del chofer</p>
+                </ion-col>
+            </ion-row>
+        </div>
+
         <div class="separator-tide"></div>
-        <ion-row align-items-center>
-            <ion-col size="4">
-                <img class="logo" src="assets/png/wmb_assets_icon_add_parent.png" alt="">
-            </ion-col>
-            <ion-col size="8">
-                <p class="title">Crear perfil para representante</p>
-            </ion-col>
-        </ion-row>
+
+        <div (click)="redirect('representative')">
+            <ion-row align-items-center>
+                <ion-col size="4">
+                    <img class="logo" src="assets/png/wmb_assets_icon_add_parent.png" alt="">
+                </ion-col>
+                <ion-col size="8">
+                    <p class="title">Crear perfil para representante</p>
+                </ion-col>
+            </ion-row>
+        </div>
+
         <div class="separator-tide"></div>
-        <ion-row align-items-center>
-            <ion-col size="4">
-                <img class="logo" src="assets/png/wmb_assets_icon_add_driver.png" alt="">
-            </ion-col>
-            <ion-col size="8">
-                <p class="title">Crear perfil para chofer</p>
-            </ion-col>
-        </ion-row>
+
+        <div (click)="redirect('driver')">
+            <ion-row align-items-center>
+                <ion-col size="4">
+                    <img class="logo" src="assets/png/wmb_assets_icon_add_driver.png" alt="">
+                </ion-col>
+                <ion-col size="8">
+                    <p class="title">Crear perfil para chofer</p>
+                </ion-col>
+            </ion-row>
+        </div>
+
         <div class="separator-tide"></div>
     </ion-grid>
     <!--END  Grid for admin-->

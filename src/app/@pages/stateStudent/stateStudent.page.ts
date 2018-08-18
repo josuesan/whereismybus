@@ -28,10 +28,8 @@ export class StateStudentPage {
                             this.students.push({
                                 id: docS.data().id,
                                 name: docS.data().name,
-                                lastname: docS.data().lastname,
                                 photo: docS.data().photo,
                                 name_representative: docR.data().name,
-                                lastname_representative: docR.data().lastname,
                                 status: docS.data().status
                             });
 

@@ -7,9 +7,9 @@
                         <img class="profile-photo" src="{{student.photo}}" alt="">
                     </ion-col>
                     <ion-col size="9">
-                        <h2 class="title">{{student.name}} {{student.lastname}}</h2>
+                        <h2 class="title">{{student.name}}</h2>
                         <p class="text">
-                            <span>Representante:</span>{{student.name_representative}} {{student.lastname_representative}}</p>
+                            <span>Representante:</span>{{student.name_representative}}</p>
 
                         <ion-select #C class="cta card-select" [(ngModel)]="student.status"  placeholder="Estado" [interfaceOptions]="customActionSheetOptions"
                             interface="action-sheet" (ionChange)="onChangeStatus(student.id, C.value)">
