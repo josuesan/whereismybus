@@ -18,7 +18,7 @@ export class LoginPage {
     if (this.authService.getCurrentUser() != null) this.router.navigate(['/home']);
   }
 
-  login() {
+  login()  {
     if (this.email != "" && this.password != "") {
       this.authService.loginUser(this.email, this.password).then((result) => {
         if (result[0] == true) this.router.navigate(['/home']);
