@@ -1,0 +1,28 @@
+/*Colors*/
+$orange: #ffa403;
+$black: #332c24;
+$red: #e24905;
+$greenD: #5abe4f;
+
+.title{
+    color: $orange;
+}
+ion-row{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.triple{
+    ion-row{
+        min-height: 150px;
+    }
+}
+.double{
+    ion-row{
+        min-height: 260px;
+    }
+}
+.fourth{
+    ion-row{
+        height: 120px;
+    }
+}

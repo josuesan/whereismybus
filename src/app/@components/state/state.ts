@@ -17,12 +17,12 @@ export class StateComponent {
 	}
 
     customActionSheetOptions: any = {
-        header: 'Colors',
-        subHeader: 'Select your favorite color'
-      };
-      customPopoverOptions: any = {
-       /* header: 'Hair Color',
-        subHeader: 'Select your hair color',
-        message: 'Only select your dominant hair color'*/
-      };
+      /*header: 'Colors',
+      subHeader: 'Select your favorite color'*/
+    };
+    customPopoverOptions: any = {
+      /* header: 'Hair Color',
+      subHeader: 'Select your hair color',
+      message: 'Only select your dominant hair color'*/
+    };
 }

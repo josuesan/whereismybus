@@ -93,3 +93,25 @@ input:-webkit-autofill {
 .bg-cards{
     background-color: #f2f2f2;
 }
+.tide{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    background-image: url(assets/svg/wmb_divider.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.separator-tide{
+    width: 100%;
+    height: 50px;
+    display: block;
+    background-image: url(assets/svg/wmb_divider.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-white{
+    background-color: white;
+}

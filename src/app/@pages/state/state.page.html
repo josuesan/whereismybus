@@ -1,0 +1,34 @@
+<ion-header>
+    <div class="header">
+        <ion-title class="title">Estado de mi hijo</ion-title>
+        <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
+    </div>
+</ion-header>
+
+<ion-content class="bg-gray">
+    <app-navbar [userType]="userType"></app-navbar>
+    <div class="card-profile bg-cards">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12">
+                    <h2 class="title">Josue Sanchez Jr</h2>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <h2 class="subtitle">En el transporte</h2>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <button class="form-btn cta"><span><img src="assets/png/wmb_assets_icon_bus_location.png" alt=""></span>Ubicación del autobus</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

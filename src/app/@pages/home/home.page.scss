@@ -1,0 +1,28 @@
+/*Colors*/
+$orange: #ffa403;
+$black: #332c24;
+$red: #e24905;
+$greenD: #5abe4f;
+$gray: #cecece;
+
+
+.header{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 15px;
+    background-color: $orange;
+
+    .title{
+        color: white;
+    }
+    .logo-header{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+        display: block;
+        height: 48px;
+    }
+    
+}

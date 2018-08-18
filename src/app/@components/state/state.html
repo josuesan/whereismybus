@@ -8,16 +8,13 @@
                 <ion-col size="9">
                     <h2 class="title">Josue Sanchez Jr</h2>
                     <p class="text"><span>Representante:</span> Josue Sanchez</p>
-                    <ion-list>
-                        <ion-item>
-                          <ion-select class="cta" [(ngModel)]="status" [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Estado">
-                              
-                            <ion-select-option class="cta" value="ausent">Ausente</ion-select-option>
-                            <ion-select-option class="cta" value="in">En el transporte</ion-select-option>
-                            <ion-select-option class="cta" value="arrived">Llego a su hogar</ion-select-option>
-                          </ion-select>
-                        </ion-item>
-                      </ion-list>
+ 
+                    <ion-select class="cta card-select" [(ngModel)]="status" placeholder="Estado" [interfaceOptions]="customActionSheetOptions" interface="action-sheet">     
+                        <ion-select-option class="cta" value="ausent">Ausente</ion-select-option>
+                        <ion-select-option class="cta" value="in">En el transporte</ion-select-option>
+                        <ion-select-option class="cta" value="arrived">Llego a su hogar</ion-select-option>
+                    </ion-select>
+
                 </ion-col>
             </ion-row>
         </ion-grid>

@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: 'statestudent', loadChildren: './@pages/stateStudent/stateStudent.module#StateStudentPageModule' },
   { path: 'representative', loadChildren: './@pages/representative/representative.module#RepresentativePageModule' },
   { path: 'driver', loadChildren: './@pages/driver/driver.module#DriverPageModule' },
+  { path: 'home', loadChildren: './@pages/home/home.module#HomePageModule' },
+  { path: 'state', loadChildren: './@pages/state/state.module#StatePageModule' },
 ];
 
 @NgModule({

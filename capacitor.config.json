@@ -1,5 +1,5 @@
 {
-  "appId": "com.juggers.whereIsMyBus",
+  "appId": "io.ionic.starter",
   "appName": "whereIsMyBus",
   "bundledWebRuntime": false,
   "webDir": "www"
