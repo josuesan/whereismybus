@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AuthService } from "../../@services";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +10,14 @@ export class DashboardComponent {
 
   @Input("userType") public type: string = "";
 
-  constructor(private authService: AuthService) {
-    
+  constructor(private router: Router) {
+
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
+  public redirect(ruta: string) {
+    this.router.navigate([ruta]);
+  }
 
 }

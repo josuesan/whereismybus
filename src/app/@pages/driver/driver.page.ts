@@ -11,6 +11,4 @@ export class DriverPage {
     constructor(){
         console.log("holña");
     }
-
-
 }

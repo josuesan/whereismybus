@@ -13,14 +13,15 @@ export class LoginPage {
   public userType: string = "";
 
   constructor(private authService: AuthService, private router: Router) { }
+
+  ngOnInit(){
+    if (this.authService.getCurrentUser() != null) this.router.navigate(['/home']);
+  }
+
   login() {
     if (this.email != "" && this.password != "") {
       this.authService.loginUser(this.email, this.password).then((result) => {
-        if (result.user != undefined){
-          this.userType = this.authService.currentUserRole;
-          console.log(this.userType);
-          this.router.navigate(['/home']);
-        }
+        if (result.user != undefined) this.router.navigate(['/home']);
         else console.error(result);
       });
     }

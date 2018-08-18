@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['stateStudent.page.scss'],
 })
 export class StateStudentPage {
-    public userType:string = "admin";
+    public userType:string = "busDriver";
     
     constructor(){
         console.log("holña");

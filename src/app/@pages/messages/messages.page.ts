@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['messages.page.scss'],
 })
 export class MessagesPage {
-  public userType:string = "admin";
+  public userType:string = "representative";
   constructor(){}
 
 }

@@ -13,17 +13,20 @@ export class ProfilePage {
     public user = {} as User;
     public student = {} as Student;
 
-    constructor(private authService: AuthService, private router: Router, private studentService: StudentsService) {}
+    constructor(private authService: AuthService, private router: Router, private studentService: StudentsService) { }
 
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
         if (currentUser != null) {
             this.authService.getUserData(currentUser.uid).then((data) => {
-                if(data.payload.exists) this.user = data.payload.data() as User;
+                if (data.payload.exists) {
+                    this.user = data.payload.data() as User;
 
-                this.studentService.getStudent(this.user.student).then((data) => {
-                    if (data.payload.exists) this.student = data.payload.data() as Student;
-                });
+                    this.studentService.getStudent(this.user.student).then((data) => {
+                        if (data.payload.exists) this.student = data.payload.data() as Student;
+                        else this.router.navigate(['/home'])
+                    });
+                } else this.router.navigate(['/home'])
             });
         } else this.router.navigate(['']);
     }
