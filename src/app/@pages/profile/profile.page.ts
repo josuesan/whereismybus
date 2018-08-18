@@ -18,12 +18,12 @@ export class ProfilePage {
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
         if (currentUser != null) {
-            this.authService.getUserData(currentUser.uid).then((data) => {
-                if (data.payload.exists) {
-                    this.user = data.payload.data() as User;
+            this.authService.getUserData(currentUser.uid).then((docUser) => {
+                if (docUser.exists) {
+                    this.user = docUser.data() as User;
 
-                    this.studentService.getStudent(this.user.student).then((data) => {
-                        if (data.payload.exists) this.student = data.payload.data() as Student;
+                    this.studentService.getStudent(this.user.student).then((docStudent) => {
+                        if (docStudent.exists) this.student = docStudent.data() as Student;
                         else this.router.navigate(['/home'])
                     });
                 } else this.router.navigate(['/home'])

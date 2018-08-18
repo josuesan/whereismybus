@@ -37,7 +37,7 @@
                 </ion-col>
             </ion-row>
         </div>
-        
+
         <div class="separator-tide"></div>
 
         <div (click)="redirect('profile')">
@@ -57,23 +57,27 @@
 <div *ngIf='type === "busDriver"' class="bg-white double">
     <!-- Grid for bus driver-->
     <ion-grid>
-        <ion-row align-items-center>
-            <ion-col size="4">
-                <img class="logo" src="assets/png/wmb_assets_icon_driver_status.png" alt="">
-            </ion-col>
-            <ion-col size="8">
-                <p class="title">Mensajes a representantes</p>
-            </ion-col>
-        </ion-row>
-        <div class="separator-tide"></div>
-        <ion-row align-items-center>
-            <ion-col size="4">
-                <img class="logo" src="assets/png/wmb_assets_icon_childstatus_onbus.png" alt="">
-            </ion-col>
-            <ion-col size="8">
-                <p class="title">Estado de los estudiantes</p>
-            </ion-col>
-        </ion-row>
+        <div (click)="redirect('messages')">
+            <ion-row align-items-center>
+                <ion-col size="4">
+                    <img class="logo" src="assets/png/wmb_assets_icon_driver_status.png" alt="">
+                </ion-col>
+                <ion-col size="8">
+                    <p class="title">Mensajes a representantes</p>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div (click)="redirect('statestudent')">
+            <div class="separator-tide"></div>
+            <ion-row align-items-center>
+                <ion-col size="4">
+                    <img class="logo" src="assets/png/wmb_assets_icon_childstatus_onbus.png" alt="">
+                </ion-col>
+                <ion-col size="8">
+                    <p class="title">Estado de los estudiantes</p>
+                </ion-col>
+            </ion-row>
+        </div>
         <div class="separator-tide"></div>
     </ion-grid>
     <!--END  Grid for bus driver-->

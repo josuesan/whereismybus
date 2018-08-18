@@ -72,7 +72,7 @@ export class AuthService {
      * @param id 
      */
     public async getUserData(id) {
-        return await this.afs.collection("students").doc(id).snapshotChanges().pipe(first()).toPromise();
+        return await this.afs.collection("users").doc(id).ref.get();
     }
 
     /**

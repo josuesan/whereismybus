@@ -18,9 +18,9 @@ export class StatePage {
     ngOnInit() {
         let currentUser = this.authService.getCurrentUser();
         if (currentUser != null){
-            this.authService.getUserData(currentUser.uid).then((data) => {
-                if (data.payload.exists) {
-                    this.user = data.payload.data() as User;
+            this.authService.getUserData(currentUser.uid).then((docUser) => {
+                if (docUser.exists) {
+                    this.user = docUser.data() as User;
                     this.studentService.getObsStudent(this.user.student).subscribe((data) => {
                         if (data.payload.exists) this.student = data.payload.data() as Student;
                         else this.router.navigate(['/home']);

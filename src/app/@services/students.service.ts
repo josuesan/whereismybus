@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { first } from 'rxjs/operators';
 import { Student } from '../#interfaces';
+
 @Injectable()
 export class StudentsService {
     constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore) {}
@@ -33,7 +34,7 @@ export class StudentsService {
      * @param id 
      */
     public async getStudent(id){
-        return await this.afs.collection("students").doc(id).snapshotChanges().pipe(first()).toPromise();
+        return await this.afs.collection("students").doc(id).ref.get();
     }
     /**
      * Function to get one student (Observable mode)
@@ -46,7 +47,7 @@ export class StudentsService {
      * Function to get all students (Promise mode)
      */
     public async getStudents(){
-        return await this.afs.collection("students").snapshotChanges().pipe(first()).toPromise();
+        return await this.afs.collection("students").ref.get();
     }
     /**
      * Function to get all students (Observable mode)
@@ -59,7 +60,14 @@ export class StudentsService {
      * Function to change the status of student (aboard, arrived, absent )
      * @param id 
      */
-    public async changeStateStudent(id){
-        return await this.afs.collection("students").doc(id).update({uid:id});
+    public async changeStateStudent(id:string, state:string){
+        return await this.afs.collection("students").doc(id).update({status:state});
+    }
+
+    /**
+     * Function that returns to the representative of a student (Promise mode)
+     */
+    public async getRepresentative(id){
+        return await this.afs.collection("users").ref.where("student", "==", id).get();
     }
 }

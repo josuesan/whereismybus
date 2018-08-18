@@ -1,24 +1,28 @@
-<ion-card class="card-states bg-cards">
-  <ion-card-content>
-        <ion-grid>
-            <ion-row align-items-center>
-                <ion-col size="3">
-                    <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
-                </ion-col>
-                <ion-col size="9">
-                    <h2 class="title">Josue Sanchez Jr</h2>
-                    <p class="text"><span>Representante:</span> Josue Sanchez</p>
- 
-                    <ion-select class="cta card-select" [(ngModel)]="status" placeholder="Estado" [interfaceOptions]="customActionSheetOptions" interface="action-sheet">     
-                        <ion-select-option class="cta" value="ausent">Ausente</ion-select-option>
-                        <ion-select-option class="cta" value="in">En el transporte</ion-select-option>
-                        <ion-select-option class="cta" value="arrived">Llego a su hogar</ion-select-option>
-                    </ion-select>
+<div *ngFor="let student of students">
+    <ion-card class="card-states bg-cards">
+        <ion-card-content>
+            <ion-grid>
+                <ion-row align-items-center>
+                    <ion-col size="3">
+                        <img class="profile-photo" src="{{student.photo}}" alt="">
+                    </ion-col>
+                    <ion-col size="9">
+                        <h2 class="title">{{student.name}} {{student.lastname}}</h2>
+                        <p class="text">
+                            <span>Representante:</span>{{student.name_representative}} {{student.lastname_representative}}</p>
 
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-  </ion-card-content>
-</ion-card>
+                        <ion-select #C class="cta card-select" [(ngModel)]="student.status"  placeholder="Estado" [interfaceOptions]="customActionSheetOptions"
+                            interface="action-sheet" (ionChange)="onChangeStatus(student.id, C.value)">
+                            <ion-select-option class="cta" value="Ausente">Ausente</ion-select-option>
+                            <ion-select-option class="cta" value="En el transporte">En el transporte</ion-select-option>
+                            <ion-select-option class="cta" value="Llego a su hogar">Llego a su hogar</ion-select-option>
+                        </ion-select>
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+</div>
 
 <!--<ion-option *ngFor="let employee of employees" [value]="employee"></ion-option>-->

@@ -19,11 +19,10 @@ export class HomePage {
   ngOnInit() {
     let currentUser = this.authService.getCurrentUser()
     if (currentUser != null) {
-      this.authService.getUserData(currentUser.uid).then((data) => {
-        if (data.payload.exists) this.userType = (data.payload.data() as User).role;
-      });
+      this.authService.getUserData(currentUser.uid).then((doc) => {
+        if (doc.exists) this.userType = (doc.data() as User).role;
+      }).catch((err) => console.error(err));
     }
     else this.router.navigate(['']);
-
   }
 }
