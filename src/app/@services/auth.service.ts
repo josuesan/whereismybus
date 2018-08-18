@@ -19,9 +19,9 @@ export class AuthService {
             let authUser = await this.afAuth.auth.signInWithEmailAndPassword(email, pass);
             let user = await this.afs.collection("users").snapshotChanges().pipe(first()).toPromise();
             this.currentUserRole = (user[0].payload.doc.data() as User).role;
-            return authUser;
+            return [true];
         } catch (error) {
-            return error;
+            return [false,error];
         }
     }
     /**

@@ -21,7 +21,7 @@ export class LoginPage {
   login() {
     if (this.email != "" && this.password != "") {
       this.authService.loginUser(this.email, this.password).then((result) => {
-        if (result.user != undefined) this.router.navigate(['/home']);
+        if (result[0] == true) this.router.navigate(['/home']);
         else console.error(result);
       });
     }
