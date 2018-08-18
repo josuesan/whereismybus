@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AuthService } from "../../@services";
 
 @Component({
   selector: 'app-dashboard',
@@ -7,14 +8,13 @@ import { Component, Input } from '@angular/core';
 })
 export class DashboardComponent {
 
-    @Input("userType") public type:string = "";
+  @Input("userType") public type: string = "";
 
-    constructor(){
+  constructor(private authService: AuthService) {
+    
+  }
 
-    }
-    ngOnInit() {
-
-	}
+  ngOnInit() {}
 
 
 }

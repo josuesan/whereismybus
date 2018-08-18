@@ -10,13 +10,17 @@ import { Router } from '@angular/router';
 export class LoginPage {
   public email: string;
   public password: string;
-  public userType: string = "admin";
+  public userType: string = "";
 
   constructor(private authService: AuthService, private router: Router) { }
   login() {
     if (this.email != "" && this.password != "") {
       this.authService.loginUser(this.email, this.password).then((result) => {
-        if (result.user != undefined)  this.router.navigate(['/profile']);
+        if (result.user != undefined){
+          this.userType = this.authService.currentUserRole;
+          console.log(this.userType);
+          this.router.navigate(['/home']);
+        }
         else console.error(result);
       });
     }
