@@ -9,7 +9,7 @@ import { User } from "../../#interfaces";
 })
 export class MessagesPage {
   public userType: string = "";
-  constructor(private cta: CTAService, private authService: AuthService,) { }
+  constructor(private cta: CTAService, private authService: AuthService) { }
   
   ngOnInit(){
     this.verifyRole;
