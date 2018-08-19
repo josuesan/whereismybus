@@ -7,13 +7,16 @@ import { NavbarComponent } from './navbar';
 import { MessageComponent } from './message';
 import { StateComponent } from './state';
 import { RegisterPlaceComponent } from './register-place';
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDqJPSrH2lvMMqt6yZMmpf9z8Pws0hyJd8'
+    })
   ],
   declarations: [
     DashboardComponent,

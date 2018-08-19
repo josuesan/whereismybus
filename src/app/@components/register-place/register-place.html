@@ -12,7 +12,11 @@
             </ion-row>
             <ion-row>
                 <ion-col size="12" >
-                    <div class="mapa">mapa</div>
+                    <div class="mapa">
+                        <agm-map [latitude]="lat" [longitude]="lng">
+                            <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
+                        </agm-map>
+                    </div>
                 </ion-col>
             </ion-row>
             <ion-row>
