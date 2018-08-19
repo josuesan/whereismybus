@@ -37,9 +37,16 @@
               },
               {
                 "input": "src/global.scss"
+              },
+              {
+                "input": "src/assets/leaflet/leaflet.css"
               }
             ],
-            "scripts": []
+            "scripts": [
+              {
+              "input": "src/assets/leaflet/leaflet.js"
+              }
+          ]
           },
           "configurations": {
             "production": {

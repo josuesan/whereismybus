@@ -18,8 +18,6 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import {firebaseConfig} from './firebase.config';
 
-/*Map Module */
-import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -34,9 +32,6 @@ import { AgmCoreModule } from '@agm/core';
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
-    })
   ],
 
   providers: [
