@@ -25,7 +25,6 @@ export class HomePage {
 
   async displayMenu(){
     let currentUser = await this.authService.getCurrentUser();
-    console.log(currentUser);
     if (currentUser != null) {
       this.authService.getUserData(currentUser.uid).then((doc) => {
         if (doc.exists) this.userType = (doc.data() as User).role;
