@@ -1,13 +1,30 @@
 <div class="modal-overlay">
     <div class="relative">
-        <div class="text">
-            <h1>HOLA</h1>
-            <p>registrate</p>
-        </div>
-        <div class="mapa">
-            mapa
-        </div>
+        <ion-grid >
+            <ion-row>
+                <ion-col size="12" >
+                    <h1 class="title text-center">¡ Bienvenido !</h1>
+                </ion-col>
+                <ion-col size="12" >
+                    <p class="text text-center"> bladasnd a</p>
+                    <p class="text text-center"> bladasnd a</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12" >
+                    <div class="mapa">mapa</div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12" >
+                    <button (click)="close()" class="form-btn-save cta">Guardar Direccion
+                        <span>
+                            <img src="assets/png/wmb_assets_icon_save.png" alt="">
+                        </span>
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>       
     </div>
-    <ion-button (click)="close()">Guardar sitio</ion-button>
 </div>
     
