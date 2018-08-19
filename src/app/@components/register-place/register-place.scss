@@ -8,19 +8,20 @@ $gray: #cecece;
 
 
 .modal-overlay{
-    height: 80vh;
-    width: 80%;
+    //height: 100vh;
+    height: auto;
+    overflow: auto;
+    width: 90%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-color: rgba( $color: #dbdbdb, $alpha: 0.8);
-    
-
+    background-color: rgba( $color: #dbdbdb, $alpha: 0.95);
+    padding: 10px;
 }
 .modal-box{
     width: 100vw;
-    height: 100vh;
+    height: auto;
     position: relative;
     display: block;
 }
@@ -70,6 +71,13 @@ $gray: #cecece;
     
 }
 
-agm-map {
-  height: 300px;
+#map {
+  height: 200px;
+  width: 100%;
+}
+.text-center{
+    text-align: center;
+}
+.min-text{
+    color: $black;
 }

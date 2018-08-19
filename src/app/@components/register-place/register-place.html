@@ -1,24 +1,21 @@
 <div class="modal-overlay">
     <div class="relative">
+            
         <ion-grid >
             <ion-row>
                 <ion-col size="12" >
                     <h1 class="title text-center">¡ Bienvenido !</h1>
                 </ion-col>
                 <ion-col size="12" >
-                    <p class="text text-center"> bladasnd a</p>
-                    <p class="text text-center"> bladasnd a</p>
+                    <p class="min-text text-center">Es tu primera ves ingresando a nuestra app</p>
+                    <!--<p class="min-text text-center">Te agradecemos facilites una dirección física para nuestro equipo. De esta manera tanto el administrador como el chofer tendrán claro la dirección de tu representado</p>-->
+                    <p class="min-text text-center">Te agradecemos facilites una dirección física para nuestro equipo.</p>
+                    <p class="min-text text-center">Pon un marcador en el mapa a continuación en tu dirección</p>
                 </ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col size="12" >
-                    <div class="mapa">
-                        <agm-map [latitude]="lat" [longitude]="lng">
-                            <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
-                        </agm-map>
-                    </div>
-                </ion-col>
-            </ion-row>
+        </ion-grid>
+        <div id="map"></div>
+        <ion-grid>
             <ion-row>
                 <ion-col size="12" >
                     <button (click)="close()" class="form-btn-save cta">Guardar Direccion
@@ -28,6 +25,21 @@
                     </button>
                 </ion-col>
             </ion-row>
+            <div class="separator-tide"></div>
+            <ion-row>
+                    <ion-col size="12" >
+                        <p class="min-text text-center">Si se te hace muy dificl ubicarte en el mapa, podemos tomar tu direccion actual como direccion de parada para el representado</p>
+                    </ion-col>
+                </ion-row>
+            <ion-row>
+                    <ion-col size="12" >
+                        <button (click)="close()" class="form-btn-save cta">Guardar Direccion Actual
+                            <span>
+                                <img src="assets/png/wmb_assets_icon_save.png" alt="">
+                            </span>
+                        </button>
+                    </ion-col>
+                </ion-row>
         </ion-grid>       
     </div>
 </div>
