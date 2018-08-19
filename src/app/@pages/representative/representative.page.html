@@ -5,30 +5,44 @@
     </div>
 </ion-header>
 
-<ion-content >
+<ion-content>
     <app-navbar [userType]="userType"></app-navbar>
     <ion-grid>
         <ion-row>
             <ion-col size="12">
                 <p class="title text-center">Foto del Representante</p>
-                <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">   
-                <button class="form-btn cta">Cargar Imagen<span><img src="assets/png/wmb_assets_icon_add_pciture.png" alt=""></span> </button>
+                <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
+
+                <button class="form-btn cta">
+                    <label for="upload">
+                        Cargar Imagen
+                        <span>
+                            <img src="assets/png/wmb_assets_icon_add_pciture.png" alt="">
+                        </span>
+                        <input id="upload" type="file" class="upload" (change)="startUpload($event.target.files)" tabindex="-1" style="display:none">
+                    </label>
+                </button>
             </ion-col>
             <ion-col size="12">
                 <p class="title text-center">Foto del Representado</p>
-                <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">   
-                <button class="form-btn cta">Cargar Imagen<span><img src="assets/png/wmb_assets_icon_add_pciture.png" alt=""></span> </button>
+                <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">
+                <button class="form-btn cta">Cargar Imagen
+                    <span>
+                        <img src="assets/png/wmb_assets_icon_add_pciture.png" alt="">
+                    </span>
+                </button>
             </ion-col>
 
             <ion-col size="12">
                 <input class="form-input" type="text" placeholder="Nombre del representante" [(ngModel)]="user.name" required>
             </ion-col>
             <ion-col size="12">
-                
-                <ion-select #S class="form-select" [(ngModel)]="status"  placeholder="Representado" [interfaceOptions]="customPopoverOptions" interface="popover" (ionChange)="onChangeStudent(S.value)">         
+
+                <ion-select #S class="form-select" [(ngModel)]="status" placeholder="Representado" [interfaceOptions]="customPopoverOptions"
+                    interface="popover" (ionChange)="onChangeStudent(S.value)">
                     <ion-select-option *ngFor="let student of students" [value]="student.id">{{student.name}}</ion-select-option>
                 </ion-select>
-                    
+
             </ion-col>
             <ion-col size="12">
                 <input class="form-input" type="text" placeholder="Teléfono" [(ngModel)]="user.phone" required>
@@ -37,10 +51,18 @@
                 <input class="form-input" type="text" placeholder="Correo Electrónico" [(ngModel)]="user.email" required>
             </ion-col>
             <ion-col size="12">
-                <button (click)="registerRepresentative()" class="form-btn-save cta">Crear Perfil<span><img src="assets/png/wmb_assets_icon_save.png" alt=""></span> </button>
+                <button (click)="registerRepresentative()" class="form-btn-save cta">Crear Perfil
+                    <span>
+                        <img src="assets/png/wmb_assets_icon_save.png" alt="">
+                    </span>
+                </button>
             </ion-col>
             <ion-col size="12">
-                <button class="form-btn cta" >Cancelar<span><img src="assets/png/wmb_assets_icon_cancel.png" alt=""></span> </button>
+                <button class="form-btn cta">Cancelar
+                    <span>
+                        <img src="assets/png/wmb_assets_icon_cancel.png" alt="">
+                    </span>
+                </button>
             </ion-col>
         </ion-row>
     </ion-grid>

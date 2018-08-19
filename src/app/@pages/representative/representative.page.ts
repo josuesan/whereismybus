@@ -3,6 +3,7 @@ import { AuthService, StudentsService } from "../../@services";
 import { Router } from '@angular/router';
 import { Student,User } from "../../#interfaces";
 
+
 @Component({
     selector: 'app-representative',
     templateUrl: 'representative.page.html',
@@ -32,8 +33,9 @@ export class RepresentativePage {
     }
 
     public registerRepresentative() {
-        if (this.user.name != "" && this.user.email != "" && this.user.student != "" && this.user.phone){
+        if (this.user.name != "" && this.user.email != "" && this.user.student != "" && this.user.phone != ""){
             this.user.role = "representative";
+            this.user.firstTime = true;
             this.authService.registerUser(this.user).then((result) => {
                 if (result[0] == true) console.log("Registro exitoso");
                 else console.error(result[1]);

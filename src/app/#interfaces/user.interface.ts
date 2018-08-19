@@ -6,4 +6,9 @@ export interface User{
     role:string;
     student:string;
     photo:string;
+    address:string;
+    long:string;
+    lat:string;
+    alt:string;
+    firstTime:boolean;
 }

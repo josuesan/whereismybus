@@ -7,6 +7,7 @@ import { User } from '../#interfaces';
 @Injectable()
 export class AuthService {
     public currentUserRole: string = "";
+ 
     constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { }
 
     /**
@@ -21,7 +22,7 @@ export class AuthService {
             this.currentUserRole = (user[0].payload.doc.data() as User).role;
             return [true];
         } catch (error) {
-            return [false,error];
+            return [false, error];
         }
     }
     /**
@@ -38,7 +39,7 @@ export class AuthService {
                 return [true];
             } catch (error) {
                 return [false, error];
-                
+
             }
         }
         catch (error) {
