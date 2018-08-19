@@ -3,7 +3,6 @@ import { AuthService, StudentsService, CTAService } from "../../@services";
 import { Router } from '@angular/router';
 import { Student, User } from "../../#interfaces";
 
-
 @Component({
     selector: 'app-representative',
     templateUrl: 'representative.page.html',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService, StudentsService, CTAService } from "../../@services";
 import { Router } from '@angular/router';
-import { Student,User } from "../../#interfaces";
+import { Student } from "../../#interfaces";
 
 @Component({
     selector: 'app-students',
@@ -10,34 +10,26 @@ import { Student,User } from "../../#interfaces";
 })
 export class StudentsPage {
     public userType: string = "admin";
-    public students: Student[];
-    public user = {} as User;
+    public student = {} as Student;
 
     constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) { }
 
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
-        if (currentUser != null) {
-            this.studentService.getObsStudents().subscribe((docs) => {
-                this.students = [];
-                docs.forEach(doc => {
-                    this.students.push(doc.payload.doc.data() as Student);
-                });
-            });
-        } else this.cta.goToLogin();
-         //this.router.navigate(['']);
+        if (currentUser == null) this.cta.goToLogin();
     }
 
-    public onChangeStudent(id){
-        this.user.student = id;
-    }
-
-    public registerRepresentative() {
-        if (this.user.name != "" && this.user.email != "" && this.user.student != "" && this.user.phone){
-            this.user.role = "representative";
-            this.authService.registerUser(this.user).then((result) => {
-                if (result[0] == true) console.log("Registro exitoso");
-                else console.error(result[1]);
+    public registerStudent() {
+        if (this.student.name != "" && this.student.grade != ""){
+            this.student.status = "Llego a su hogar";
+            this.studentService.registerStudent(this.student).then((docRef) => {
+                
+                this.studentService.updateStudent(docRef.id, {id: docRef.id}).then(() => {
+                    console.log("Agregando estudiante")
+                    this.student = {} as Student;
+                })
+                .catch((err) => console.error(err));
+                
             })
             .catch((err) => console.error(err));
         }

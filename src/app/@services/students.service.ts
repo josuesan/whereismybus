@@ -26,8 +26,8 @@ export class StudentsService {
      * Function to update a fields of student
      * @param student 
      */
-    public async updateStudent(student:Student){
-        return await this.afs.collection("students").doc(student.id).update(student);
+    public async updateStudent(id,data){
+        return await this.afs.collection("students").doc(id).update(data);
     }
     /**
      *  Function to get one student (Pomise mode)

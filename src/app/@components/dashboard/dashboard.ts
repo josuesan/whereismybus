@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { CTAService } from "../../@services";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +11,14 @@ export class DashboardComponent {
 
   @Input("userType") public type: string = "";
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private cta:CTAService) {
 
   }
 
   ngOnInit() { }
 
   public redirect(ruta: string) {
-    this.router.navigate([ruta]);
+    this.cta.redirect(ruta);
   }
 
 }

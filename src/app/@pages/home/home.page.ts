@@ -15,7 +15,7 @@ export class HomePage {
   public password: string;
   public userType: string = "";
 
-  constructor(private modalController: ModalController,private authService: AuthService,private cta:CTAService) {
+  constructor(private modalController: ModalController,private authService: AuthService, private cta:CTAService) {
   }
 
   ngOnInit() {
@@ -28,9 +28,10 @@ export class HomePage {
     if (currentUser != null) {
       this.authService.getUserData(currentUser.uid).then((doc) => {
         if (doc.exists) this.userType = (doc.data() as User).role;
+        else this.cta.goToHome();
       }).catch((err) => console.error(err));
     }
-    else this.cta.goToHome();
+    else this.cta.goToLogin();
   }
 
   async presentModal() {

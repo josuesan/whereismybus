@@ -4,12 +4,15 @@ import { Router } from '@angular/router';
 @Injectable()
 export class CTAService {
     public currentUserRole: string = "";
-    constructor(private router: Router) {}
+    constructor(private router: Router) { }
 
-    goToHome(){
+    goToHome() {
         this.router.navigate(['/home']);
     }
-    goToLogin(){
+    goToLogin() {
         this.router.navigate(['/login']);
+    }
+    public redirect(ruta: string) {
+        this.router.navigate([ruta]);
     }
 }

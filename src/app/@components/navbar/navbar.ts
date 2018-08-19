@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { CTAService } from "../../@services";
 
 @Component({
   selector: 'app-navbar',
@@ -7,14 +9,13 @@ import { Component, Input } from '@angular/core';
 })
 export class NavbarComponent {
 
-    @Input("userType") public type:string = " ";
+  @Input("userType") public type: string = " ";
 
-    constructor(){
-        console.log(this.type);
-    }
-    ngOnInit() {
-		console.log(this.type);
-	}
+  constructor(private router: Router, private cta:CTAService) { }
 
+  ngOnInit() { }
 
+  public redirect(ruta: string) {
+    this.cta.redirect(ruta);
+  }
 }

@@ -16,7 +16,6 @@ export class LoginPage {
 
   ngOnInit(){
     if (this.authService.getCurrentUser() != null) this.cta.goToHome();
-    console.log(this.authService.getCurrentUser());
   }
 
   login()  {

@@ -1,52 +1,65 @@
 <div *ngIf='type === "representative"' class="bg-dark navbar">
     <!-- Grid for representative-->
-        <ion-grid>
-            <ion-row>
-                <ion-col size="3">
-                    <img class="" src="assets/svg/wmb_assets_icon_driver_status_white.svg" alt="">
-                </ion-col>
-                <ion-col size="3">
-                    <img class="" src="assets/svg/wmb_assets_icon_child_status_white.svg" alt="">
-                </ion-col>
-                <ion-col size="3">
-                    <img class="" src="assets/svg/wmb_assets_icon_bus_location_white.svg" alt="">
-                </ion-col>
-                <ion-col size="3">
-                    <img class="" src="assets/svg/wmb_assets_icon_profile_white.svg" alt="">
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+    <ion-grid>
+        <ion-row>
+
+            <ion-col size="3" (click)="redirect('messages')">
+                <img class="" src="assets/svg/wmb_assets_icon_driver_status_white.svg" alt="">
+            </ion-col>
+
+            <ion-col size="3" (click)="redirect('state')">
+                <img class="" src="assets/svg/wmb_assets_icon_child_status_white.svg" alt="">
+            </ion-col>
+
+
+            <ion-col size="3" (click)="redirect('')">
+                <img class="" src="assets/svg/wmb_assets_icon_bus_location_white.svg" alt="">
+            </ion-col>
+
+
+            <ion-col size="3" (click)="redirect('profile')">
+                <img class="" src="assets/svg/wmb_assets_icon_profile_white.svg" alt="">
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
     <!--END  Grid for representative-->
 </div>
 <div *ngIf='type === "busDriver"' class="bg-dark navbar">
     <!-- Grid for bus Driver-->
-        <ion-grid>
-            <ion-row>
-                <ion-col size="6">
-                    <img class="" src="assets/svg/wmb_assets_icon_driver_status_white.svg" alt="">
-                </ion-col>
-                <ion-col size="6">
-                    <img class="" src="assets/svg/wmb_assets_icon_child_status_white.svg" alt="">
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6" (click)="redirect('messages')">
+                <img class="" src="assets/svg/wmb_assets_icon_driver_status_white.svg" alt="">
+            </ion-col>
+
+            <ion-col size="6" (click)="redirect('statestudent')">
+                <img class="" src="assets/svg/wmb_assets_icon_child_status_white.svg" alt="">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
     <!--END  Grid for bus Driver-->
 </div>
 <div *ngIf='type === "admin"' class="bg-dark navbar">
     <!-- Grid for admin-->
-        <ion-grid>
-            <ion-row>
-                <ion-col size="4">
-                    <img class="" src="assets/svg/wmb_assets_icon_driver_status_white.svg" alt="">
-                </ion-col>
-                <ion-col size="4">
-                    <img class="" src="assets/svg/wmb_assets_icon_add_parent_white.svg" alt="">
-                </ion-col>
-                <ion-col size="4">
-                    <img class="" src="assets/svg/wmb_assets_icon_add_driver_white.svg" alt="">
-                </ion-col>
-                
-            </ion-row>
-        </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="3" (click)="redirect('messages')">
+                <img class="" src="assets/svg/wmb_assets_icon_driver_status_white.svg" alt="">
+            </ion-col>
+
+            <ion-col size="3" (click)="redirect('students')">
+                <img class="" src="assets/svg/wmb_assets_icon_add_student2_white.svg" alt="">
+            </ion-col>
+
+            <ion-col size="3" (click)="redirect('representative')">
+                <img class="" src="assets/svg/wmb_assets_icon_add_parent_white.svg" alt="">
+            </ion-col>
+
+            <ion-col size="3" (click)="redirect('driver')">
+                <img class="" src="assets/svg/wmb_assets_icon_add_driver_white.svg" alt="">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
     <!--END  Grid for admin-->
 </div>
