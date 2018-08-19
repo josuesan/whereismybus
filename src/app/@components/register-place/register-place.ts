@@ -6,7 +6,9 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['register-place.scss'],
 })
 export class RegisterPlaceComponent {
-
+    lat = Number("10.500000");
+    lng  = Number("-66.916664");
+    
     constructor(private modalController: ModalController){
 
     }

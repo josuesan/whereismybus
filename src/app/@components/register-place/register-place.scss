@@ -1,0 +1,75 @@
+
+/*Colors*/
+$orange: #ffa403;
+$black: #332c24;
+$red: #e24905;
+$greenD: #5abe4f;
+$gray: #cecece;
+
+
+.modal-overlay{
+    height: 80vh;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba( $color: #dbdbdb, $alpha: 0.8);
+    
+
+}
+.modal-box{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: block;
+}
+.form-btn{
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    color: $red;
+    span{
+        margin-left: 5px;
+        img{
+            vertical-align: middle;
+            height: 80%;
+        }
+    }
+    &:hover{
+        /*background-color: $orange;
+        color: white;*/
+    }
+    
+}
+.title{
+    color: $orange;
+    text-align: center;
+    margin-top: 0;
+}
+.form-btn-save{
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    color: $greenD;
+    span{
+        margin-left: 5px;
+        img{
+            vertical-align: middle;
+            height: 80%;
+        }
+    }
+    &:hover{
+        /*background-color: $orange;
+        color: white;*/
+    }
+    
+}
+
+agm-map {
+  height: 300px;
+}
