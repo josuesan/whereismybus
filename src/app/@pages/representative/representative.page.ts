@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService, StudentsService } from "../../@services";
 import { Router } from '@angular/router';
-import { Student,User } from "../../#interfaces";
+import { Student, User } from "../../#interfaces";
 
 
 @Component({
@@ -28,19 +28,22 @@ export class RepresentativePage {
         } else this.router.navigate(['']);
     }
 
-    public onChangeStudent(id){
+    public onChangeStudent(id) {
         this.user.student = id;
     }
 
     public registerRepresentative() {
-        if (this.user.name != "" && this.user.email != "" && this.user.student != "" && this.user.phone != ""){
+        if (this.user.name != "" && this.user.email != "" && this.user.student != "" && this.user.phone != "") {
             this.user.role = "representative";
             this.user.firstTime = true;
             this.authService.registerUser(this.user).then((result) => {
-                if (result[0] == true) console.log("Registro exitoso");
+                if (result[0] == true) {
+                    console.log("Registro exitoso");
+                    this.user = {} as User;
+                }
                 else console.error(result[1]);
             })
-            .catch((err) => console.error(err));
+                .catch((err) => console.error(err));
         }
     }
 }
