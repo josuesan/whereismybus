@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { Student,User } from "../../#interfaces";
 
 @Component({
-    selector: 'app-representative',
-    templateUrl: 'representative.page.html',
-    styleUrls: ['representative.page.scss'],
+    selector: 'app-students',
+    templateUrl: 'students.page.html',
+    styleUrls: ['students.page.scss'],
 })
-export class RepresentativePage {
+export class StudentsPage {
     public userType: string = "admin";
     public students: Student[];
     public user = {} as User;
@@ -25,6 +25,7 @@ export class RepresentativePage {
                 });
             });
         } else this.cta.goToLogin();
+         //this.router.navigate(['']);
     }
 
     public onChangeStudent(id){

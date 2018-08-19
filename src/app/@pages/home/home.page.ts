@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { AuthService } from "../../@services";
-import { Router } from '@angular/router';
+import { AuthService, CTAService } from "../../@services";
 import { User } from "../../#interfaces";
+import { ModalController } from '@ionic/angular';
+import { RegisterPlaceComponent } from "../../@components";
+
 
 @Component({
   selector: 'app-home',
@@ -13,16 +15,30 @@ export class HomePage {
   public password: string;
   public userType: string = "";
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private modalController: ModalController,private authService: AuthService,private cta:CTAService) {
   }
 
   ngOnInit() {
-    let currentUser = this.authService.getCurrentUser()
+    this.displayMenu();
+    this.presentModal();
+  }
+
+  async displayMenu(){
+    let currentUser = await this.authService.getCurrentUser();
+    console.log(currentUser);
     if (currentUser != null) {
       this.authService.getUserData(currentUser.uid).then((doc) => {
         if (doc.exists) this.userType = (doc.data() as User).role;
       }).catch((err) => console.error(err));
     }
-    else this.router.navigate(['']);
+    else this.cta.goToHome();
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: RegisterPlaceComponent,
+      componentProps: { value: 123 }
+    });
+    return await modal.present();
   }
 }

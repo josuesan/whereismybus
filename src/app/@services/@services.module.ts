@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { StudentsService } from './students.service';
 import { GeolocationService } from './geolocation.service';
 import { NotificationService } from './notification.service';
+import { CTAService } from './cta.service';
 @NgModule({
   imports: [
     CommonModule
@@ -13,7 +14,8 @@ import { NotificationService } from './notification.service';
     StudentsService,
     AuthService,
     GeolocationService,
-    NotificationService
+    NotificationService,
+    CTAService
     
   ]
 })

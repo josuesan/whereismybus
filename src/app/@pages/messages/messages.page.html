@@ -1,20 +1,31 @@
 <ion-header>
     <div class="header">
-        <ion-title class="title">Mensajes a los padres</ion-title>
-        <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
+        <ion-grid class="no-pd max-h">
+            <ion-row align-items-center class="max-h"> 
+                <ion-col size="2" class="no-pd">
+                    <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="" (click)="redirect('home')">
+                </ion-col>
+                <ion-col size="8" class="no-pd">
+                    <ion-title class="title">Mensajes a los padres</ion-title>
+                </ion-col>
+                <ion-col size="2" class="no-pd">
+                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">   
+                </ion-col>
+            </ion-row>
+        </ion-grid> 
     </div>
 </ion-header>
 
 <ion-content class="bg-gray">
     <app-navbar [userType]="userType"></app-navbar>
-    <button class="btn-msg cta">Limpiar Historial <span><img src="assets/png/wmb_assets_icon_delete.png" alt=""></span></button>
-    <button class="btn-msg cta">Mensajes predeterminados <span><img src="assets/png/wmb_assets_icon_driver_status.png" alt=""></span></button>
+    <button class="btn-msg cta" *ngIf="userType == 'busDriver'">Limpiar Historial <span><img src="assets/png/wmb_assets_icon_delete.png" alt=""></span></button>
+    <button class="btn-msg cta"  *ngIf="userType == 'busDriver'">Mensajes predeterminados <span><img src="assets/png/wmb_assets_icon_driver_status.png" alt=""></span></button>
     <app-message></app-message>
-    <ion-grid class="write-box no-pd">
+    <ion-grid class="write-box no-pd" *ngIf="userType == 'busDriver'">
         <ion-row align-items-center>
-            <ion-col size="12" class="flex no-pd write-area">
+            <ion-col size="12" class="flex no-pd write-area" >
                 <input class="input-msg text" type="text" placeholder="Escribe un mensaje">
-                <button class="btn-write-msg"><img src="assets/svg/icon_send_message.svg" alt=""></button>
+                <button class="btn-write-msg" ><img src="assets/svg/icon_send_message.svg" alt=""></button>
             </ion-col>
         </ion-row>
     </ion-grid>

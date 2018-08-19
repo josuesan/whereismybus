@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from "../../@services";
+import { AuthService, CTAService } from "../../@services";
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,16 +12,17 @@ export class LoginPage {
   public password: string;
   public userType: string = "";
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private cta:CTAService,private authService: AuthService, private router: Router) { }
 
   ngOnInit(){
-    if (this.authService.getCurrentUser() != null) this.router.navigate(['/home']);
+    if (this.authService.getCurrentUser() != null) this.cta.goToHome();
+    console.log(this.authService.getCurrentUser());
   }
 
   login()  {
     if (this.email != "" && this.password != "") {
       this.authService.loginUser(this.email, this.password).then((result) => {
-        if (result[0] == true) this.router.navigate(['/home']);
+        if (result[0] == true) this.cta.goToHome();
         else console.error(result);
       });
     }

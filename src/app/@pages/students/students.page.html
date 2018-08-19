@@ -1,18 +1,18 @@
 <ion-header>
     <div class="header">
         <ion-grid class="no-pd max-h">
-            <ion-row align-items-center class="max-h"> 
-                <ion-col size="2" class="no-pd">
-                    <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="">
-                </ion-col>
-                <ion-col size="8" class="no-pd">
-                    <ion-title class="title">Nuevo Representante</ion-title>
-                </ion-col>
-                <ion-col size="2" class="no-pd">
-                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">   
-                </ion-col>
-            </ion-row>
-        </ion-grid> 
+          <ion-row align-items-center class="max-h"> 
+              <ion-col size="2" class="no-pd">
+                  <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="">
+              </ion-col>
+              <ion-col size="8" class="no-pd">
+                <ion-title class="title">Nuevo Estudiante</ion-title>
+              </ion-col>
+              <ion-col size="2" class="no-pd">
+                  <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">   
+              </ion-col>
+          </ion-row>
+      </ion-grid> 
     </div>
 </ion-header>
 
@@ -21,10 +21,11 @@
     <ion-grid>
         <ion-row>
             <ion-col size="12">
-                <p class="title text-center">Foto del Representante</p>
+                <p class="title text-center">Foto del Estudiante</p>
                 <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">   
                 <button class="form-btn cta">Cargar Imagen<span><img src="assets/png/wmb_assets_icon_add_pciture.png" alt=""></span> </button>
             </ion-col>
+
             <ion-col size="12">
                 <input class="form-input" type="text" placeholder="Nombre del representante" [(ngModel)]="user.name" required>
             </ion-col>

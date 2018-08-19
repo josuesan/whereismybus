@@ -7,7 +7,9 @@ import { User } from '../#interfaces';
 @Injectable()
 export class AuthService {
     public currentUserRole: string = "";
-    constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { }
+    constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
+        
+    }
 
     /**
      *  Function to login in the app (Users admited: administrator, bus driver, represent of a student)

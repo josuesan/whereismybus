@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CTAService } from '../../@services';
 
 @Component({
   selector: 'app-messages',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class MessagesPage {
   public userType:string = "representative";
-  constructor(){}
-
+  constructor(private cta:CTAService){}
+  goHome(){
+    this.cta.goToHome();
+}
 }

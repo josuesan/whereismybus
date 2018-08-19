@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, StudentsService } from "../../@services";
+import { AuthService, StudentsService, CTAService } from "../../@services";
 import { User, Student } from "../../#interfaces";
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class ProfilePage {
     public user = {} as User;
     public student = {} as Student;
 
-    constructor(private authService: AuthService, private router: Router, private studentService: StudentsService) { }
+    constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) { }
 
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
@@ -24,10 +24,14 @@ export class ProfilePage {
 
                     this.studentService.getStudent(this.user.student).then((docStudent) => {
                         if (docStudent.exists) this.student = docStudent.data() as Student;
-                        else this.router.navigate(['/home'])
+                        else this.cta.goToHome();
                     });
-                } else this.router.navigate(['/home'])
+                } else this.cta.goToHome();
             });
-        } else this.router.navigate(['']);
+        } else this.cta.goToLogin();
+    }
+
+    goHome(){
+        this.cta.goToHome();
     }
 }

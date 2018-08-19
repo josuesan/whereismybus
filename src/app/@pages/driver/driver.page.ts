@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { AuthService, CTAService } from "../../@services";
 @Component({
   selector: 'app-driver',
   templateUrl: 'driver.page.html',
@@ -8,7 +8,9 @@ import { Component } from '@angular/core';
 export class DriverPage {
     public userType:string = "admin";
     
-    constructor(){
-        console.log("holña");
+    constructor(private cta:CTAService){ }
+
+    goHome(){
+        this.cta.goToHome();
     }
 }

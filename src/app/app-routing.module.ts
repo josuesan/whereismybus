@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'driver', loadChildren: './@pages/driver/driver.module#DriverPageModule' },
   { path: 'home', loadChildren: './@pages/home/home.module#HomePageModule' },
   { path: 'state', loadChildren: './@pages/state/state.module#StatePageModule' },
+  { path: 'students', loadChildren: './@pages/students/students.module#StudentsPageModule' },
 ];
 
 @NgModule({

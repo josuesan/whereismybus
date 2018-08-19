@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, StudentsService } from "../../@services";
+import { AuthService, StudentsService, CTAService } from "../../@services";
 import { Router } from '@angular/router';
 import { Student, User } from "../../#interfaces";
 
@@ -12,7 +12,7 @@ export class StateStudentPage {
     public userType: string = "busDriver";
     public students: any = [];
 
-    constructor(private authService: AuthService, private router: Router, private studentService: StudentsService) {
+    constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) {
 
     }
 
@@ -39,8 +39,10 @@ export class StateStudentPage {
             })
             .catch((err) => console.error(err));
 
-        } else this.router.navigate(['/login']);
+        } else this.cta.goToLogin();
     }
 
-
+    goHome(){
+        this.cta.goToHome();
+    }
 }
