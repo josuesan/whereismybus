@@ -9,6 +9,5 @@ export interface User{
     address:string;
     long:string;
     lat:string;
-    alt:string;
     firstTime:boolean;
 }

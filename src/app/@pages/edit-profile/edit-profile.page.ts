@@ -13,7 +13,7 @@ export class EditProfilePage {
     public user = {} as User;
     public student = {} as Student;
 
-    constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) { }
+    constructor(private cta: CTAService, private authService: AuthService, private router: Router, private studentService: StudentsService) { }
 
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
@@ -31,7 +31,11 @@ export class EditProfilePage {
         } else this.cta.goToLogin();
     }
 
-    goHome(){
+    goHome() {
         this.cta.goToHome();
+    }
+
+    public redirect(ruta: string) {
+        this.cta.redirect(ruta);
     }
 }
