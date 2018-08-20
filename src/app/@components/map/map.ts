@@ -29,6 +29,7 @@ export class MapComponent {
             map.invalidateSize();
             console.log("invalidate");
           }, 1000);
+          
         this.geolocationService.todo();
     }
 
