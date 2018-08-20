@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar';
 import { MessageComponent } from './message';
 import { StateComponent } from './state';
 import { RegisterPlaceComponent } from './register-place';
+import { MapComponent } from './map';
 
 @NgModule({
   imports: [
@@ -19,21 +20,24 @@ import { RegisterPlaceComponent } from './register-place';
     NavbarComponent,
     MessageComponent,
     StateComponent,
-    RegisterPlaceComponent
+    RegisterPlaceComponent,
+    MapComponent
   ],
   entryComponents: [
     DashboardComponent,
     NavbarComponent,
     MessageComponent,
     StateComponent,
-    RegisterPlaceComponent
+    RegisterPlaceComponent,
+    MapComponent
   ],
   exports:[
     DashboardComponent,
     NavbarComponent,
     MessageComponent,
     StateComponent,
-    RegisterPlaceComponent
+    RegisterPlaceComponent,
+    MapComponent
   ]
 })
 export class ComponentsModule {}

@@ -1,0 +1,26 @@
+<ion-header>
+    <div class="header">
+        <ion-grid class="no-pd max-h">
+            <ion-row align-items-center class="max-h"> 
+                <ion-col size="2" class="no-pd">
+                    <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="" (click)="goHome()">
+                </ion-col>
+                <ion-col size="8" class="no-pd">
+                    <ion-title class="title">Ubicacion de autobus</ion-title>
+                </ion-col>
+                <ion-col size="2" class="no-pd">
+                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">   
+                </ion-col>
+            </ion-row>
+        </ion-grid> 
+    </div>
+</ion-header>
+
+<ion-content class="bg-gray">
+    <ion-grid>
+        <ion-row size="12" >
+            <p class="text">Tiempo estimado de llegada: {{time}}</p>
+            <app-map></app-map>
+        </ion-row>
+    </ion-grid>
+</ion-content>
