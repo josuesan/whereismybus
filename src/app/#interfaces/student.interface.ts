@@ -4,4 +4,5 @@ export interface Student{
     grade:string;
     status:string;
     photo:string;
+    
 }

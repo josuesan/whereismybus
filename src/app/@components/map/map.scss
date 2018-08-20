@@ -1,0 +1,25 @@
+
+/*Colors*/
+$orange: #ffa403;
+$black: #332c24;
+$red: #e24905;
+$greenD: #5abe4f;
+$gray: #cecece;
+
+.title{
+    color: $orange;
+    text-align: center;
+    margin-top: 0;
+}
+
+#map {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+.text-center{
+    text-align: center;
+}
+.min-text{
+    color: $black;
+}

@@ -1,6 +1,7 @@
 export interface Geolocation{
     id:string;
-    long:string;
-    lat:string;
-    alt:string;
+    longitude:string;
+    latitude:string;
+    altitude:string;
+    createdAt:Date;
 }

@@ -1,0 +1,63 @@
+/*Colors*/
+$orange: #ffa403;
+$black: #332c24;
+$red: #e24905;
+$greenD: #5abe4f;
+$gray: #cecece;
+
+
+.header{
+    //display: flex;
+    //align-items: center;
+    height: 60px;
+    //padding: 0 15px;
+    background-color: $orange;
+
+    .title{
+        color: white;
+    }
+    .logo-header{
+        /*position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+        display: block;
+        height: 48px;*/
+    }
+    
+}
+.profile-photo{
+    border: 1px solid #332c24;
+    border-radius: 100%;
+    width:80%;
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+.title{
+    color: $orange;
+}
+.subtitle{
+    color: $gray;
+}
+.card-profile{
+    margin: 0 10px;
+}
+.form-btn{
+    margin: 0 auto;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    color: $greenD;
+    span{
+        img{
+            vertical-align: middle;
+            height: 80%;
+        }
+    }
+    &:hover{
+        /*background-color: $orange;
+        color: white;*/
+    }
+
+}
