@@ -6,17 +6,25 @@ import { Geolocation } from '../#interfaces';
 
 import { StudentsService } from "./students.service";
 import { ApiService } from './api.service';
+import { BehaviorSubject } from 'rxjs';
+
 
 declare const L;
 @Injectable()
 export class GeolocationService {
+    
     private myMap;
     private latLocation:number=0;
     private lngLocation:number=0;
     private latStop ="10.5000000";
     private lngStop ="-66.916664";
-    private timeToArrive;
-    private distanceToArrive;
+    private timeToArrive:number;
+    private distanceToArrive:number;
+    private oldMarkerBus;
+    private stopMarker;
+    public obsDistanceToArrive = new BehaviorSubject<any>(this.distanceToArrive);
+    public obsTimeToArrive = new BehaviorSubject<any>(this.timeToArrive);
+
     constructor(private afs: AngularFirestore, private apiService:ApiService, private studentService: StudentsService) {}
 
     /**
@@ -137,25 +145,32 @@ export class GeolocationService {
      */
     async updateMapInfo(){
         //Primero se debe buscar coordenadas de parada
-        this.getStopLocationbyUser()
+        let id = "2eJTi2lAQPT1XhCydorIKSghce93";
+        await this.getStopLocationbyUser(id);
 
         //Subcribe to get all positions in real time of the bus
         this.getObsPositions().subscribe( values =>{
 
             const coord = values[0].payload.doc.data() as Geolocation;
             this.myMap.panTo(new L.LatLng(coord.latitude, coord.longitude));
-            this.myMap.setZoom(20);
+            this.myMap.setZoom(17);
 
             //Create a new marker to the new position of bus
             const icon = L.icon({
                 iconUrl: "assets/marker-icon.png",
                 shadowUrl: "assets/marker-shadow.png"
             });
+            if(this.oldMarkerBus != undefined){
+                console.log("borrando");
+                this.myMap.removeLayer(this.oldMarkerBus);
+            }
+            
             const marker = L.marker(new L.LatLng(coord.latitude, coord.longitude), {
                 draggable: false,
                 icon
             }).addTo(this.myMap);
-
+            this.oldMarkerBus = marker;
+            
             // Get the time and distance of the bus to respect stop
             this.getAproxTime(coord.latitude, coord.longitude);   
         })
@@ -169,12 +184,32 @@ export class GeolocationService {
         let url = `&coordinates=${lngBus},${latBus}|${this.lngStop},${this.latStop}&profile=driving-car&preference=shortest`;
         let response= await this.apiService.get(url).toPromise();
         this.distanceToArrive = response.json().routes[0].summary.distance;
-        this.timeToArrive = response.json().routes[0].summary.duration;
+        this.timeToArrive = Number(((response.json().routes[0].summary.duration)/60).toFixed());
+        this.obsDistanceToArrive.next(this.distanceToArrive);
+        this.obsTimeToArrive.next(this.timeToArrive);
+        
+
     }
     /**
      * get the stop location
      */
-    getStopLocationbyUser(){
+    async getStopLocationbyUser(id){
+        let data = await this.studentService.getAddress(id);
+        this.latStop= data.lat;
+        this.lngStop= data.long;
 
+        //Create a new marker to the new position of bus
+        const icon = L.icon({
+            iconUrl: "assets/marker-icon-stop.png",
+            shadowUrl: "assets/marker-shadow.png"
+        });
+        
+        const marker = L.marker(new L.LatLng(this.latStop, this.lngStop), {
+            draggable: false,
+            icon
+        }).addTo(this.myMap);
+        this.stopMarker = marker;
     }
+    
+
 }

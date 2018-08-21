@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { first } from 'rxjs/operators';
-import { Student } from '../#interfaces';
+import { Student, User } from '../#interfaces';
 
 import { AuthService } from "./auth.service";
+
 
 @Injectable()
 export class StudentsService {
@@ -84,5 +85,11 @@ export class StudentsService {
     public async saveLocationStudent(lat, lng){
         let currentUser = this.authService.getCurrentUser().uid;
         return await this.afs.collection("users").doc(currentUser).update({firstTime: false, lat: lat, long: lng});
+    }
+
+    public async getAddress(id){
+        let res = await this.afs.collection("users").ref.where("id", "==", id).get();
+        const data = res.docs[0].data() as User;
+        return data;
     }
 }

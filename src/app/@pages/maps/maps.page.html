@@ -16,10 +16,15 @@
     </div>
 </ion-header>
 
-<ion-content class="bg-gray">
+<ion-content class="bg-gray ">
     <ion-grid>
+        <ion-row size="12" class="box-area">
+            <p class="text">Tiempo estimado de llegada: {{time}} min.</p>
+        </ion-row>
         <ion-row size="12" >
-            <p class="text">Tiempo estimado de llegada: {{time}}</p>
+            <p class="text">Distancia estimada del autobus con la parada: {{distance}} m.</p>
+        </ion-row>
+        <ion-row> 
             <app-map></app-map>
         </ion-row>
     </ion-grid>
