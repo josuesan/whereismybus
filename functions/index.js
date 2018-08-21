@@ -10,14 +10,12 @@ exports.saveLocation = functions.https.onRequest((request, response) => {
     return cors(request, response, () => {
         const lat = request.params[0].split("/")[1];
         const lng = request.params[0].split("/")[2];
-        const alt = request.params[0].split("/")[3];
 
         return admin.firestore()
             .collection("location")
             .add({
                 latitude: lat,
                 longitude: lng,
-                altitude: alt,
                 createdAt: admin.firestore.FieldValue.serverTimestamp(),
             })
             .then((docRef) => {
@@ -32,3 +30,24 @@ exports.saveLocation = functions.https.onRequest((request, response) => {
             })
     });
 });
+
+//Limpiar historial de messages
+exports.cleanMessageHistory = functions.https.onCall((data, context) => {
+    return admin.firestore()
+        .collection("messages")
+        .get()
+        .then((docs) => {
+            docs.forEach((doc) => {
+                admin.firestore()
+                    .collection("messages")
+                    .doc(doc.id)
+                    .delete();
+            });
+            console.log("Clean History");
+            return "Clean History";
+        })
+        .catch((err) => {
+            console.error(err);
+            return err;
+        })
+})

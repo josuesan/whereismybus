@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CTAService, AuthService } from '../../@services';
+import { CTAService, AuthService, NotificationService } from '../../@services';
+import { Notification } from "../../#interfaces";
 
 @Component({
   selector: 'app-messages',
@@ -8,13 +9,15 @@ import { CTAService, AuthService } from '../../@services';
 })
 export class MessagesPage {
   public userType: string = "";
-  constructor(private cta: CTAService, private authService: AuthService) { }
-  
-  ngOnInit(){
+  public message = {} as Notification;
+
+  constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
+
+  ngOnInit() {
     this.verifyRole();
   }
 
-  async verifyRole(){
+  async verifyRole() {
     let currentUser = await this.authService.getCurrentUser();
     if (currentUser != null) {
       this.authService.getUserData(currentUser.uid).then((doc) => {
@@ -25,8 +28,30 @@ export class MessagesPage {
     else this.cta.goToLogin();
   }
 
-  
-  goHome() { 
-    this.cta.goToHome(); 
+  async saveNewMessage() {
+    let currentUser = await this.authService.getCurrentUser();
+    if (currentUser != null) {
+      this.message.driver = currentUser.uid;
+      this.messageService.addNewMessage(this.message).then((docRef) => {
+        console.log("Mensaje agregado")
+        // this.messageService.updateMessage(docRef.id, { id: docRef.id }).then(() => {
+        //   console.log("Mensaje agregado")
+        //   this.message = {} as Notification;
+        // })
+        //   .catch((err) => console.error(err));
+      });
+    } 
+    else this.cta.goToLogin();
+  }
+
+  async cleanHistory(){
+    await this.messageService.cleanHistory().then((result) => {
+      console.log(result);
+    }).catch((err) => console.error(err));
+  }
+
+
+  goHome() {
+    this.cta.goToHome();
   }
 }

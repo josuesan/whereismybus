@@ -1,5 +1,5 @@
 export interface Notification{
-    id: string;
-    title:string;
+    driver:string;
     message:string;
+    createdAt:any;
 }
