@@ -41,7 +41,6 @@ export class EditProfilePage {
     }
 
     public saveChanges() {
-
         if (this.user.phone != "") {
             this.studentService.updateRepresentative(this.user.id, this.user).then(() => {
                 console.log("Perfil Editado");

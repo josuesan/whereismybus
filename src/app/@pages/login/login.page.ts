@@ -22,7 +22,7 @@ export class LoginPage {
     if (this.email != "" && this.password != "") {
       this.authService.loginUser(this.email, this.password).then((result) => {
         if (result[0] == true) this.cta.goToHome();
-        else console.error(result);
+        else console.error(result[1]);
       });
     }
   }

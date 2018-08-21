@@ -29,13 +29,15 @@ export class RegisterPlaceComponent {
   
     }
     saveDataMap(){
-        this.geolocationService.saveDataMap();
-        this.modalController.dismiss();
+        if (this.geolocationService.saveDataMap()){
+            console.log("entre");
+            this.modalController.dismiss();
+        }
     }
-    saveActualLocation(){
-        this.geolocationService.saveActualLocation();
-        this.modalController.dismiss();
-    }
-    
 
+    saveActualLocation(){
+        if (this.geolocationService.saveActualLocation()){
+            this.modalController.dismiss();
+        }
+    }
 }

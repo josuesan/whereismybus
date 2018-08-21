@@ -4,9 +4,11 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { first } from 'rxjs/operators';
 import { Student } from '../#interfaces';
 
+import { AuthService } from "./auth.service";
+
 @Injectable()
 export class StudentsService {
-    constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore) {}
+    constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, private authService: AuthService) {}
 
     /**
      * Function to register student 
@@ -77,5 +79,10 @@ export class StudentsService {
      */
     public async updateRepresentative(id, data){
         return await this.afs.collection("users").doc(id).update(data);
+    }
+
+    public async saveLocationStudent(lat, lng){
+        let currentUser = this.authService.getCurrentUser().uid;
+        return await this.afs.collection("users").doc(currentUser).update({firstTime: false, lat: lat, long: lng});
     }
 }
