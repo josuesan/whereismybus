@@ -3,7 +3,7 @@
         <ion-grid class="no-pd max-h">
             <ion-row align-items-center class="max-h"> 
                 <ion-col size="2" class="no-pd">
-                    <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="" (click)="goHome()">
+                    <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="" (click)="redirect('profile')">
                 </ion-col>
                 <ion-col size="8" class="no-pd">
                     <ion-title class="title">Editar Perfil</ion-title>
@@ -26,14 +26,13 @@
                 </ion-col>
                 <ion-col size="5">
                     <!-- <h2 class="title">{{user.name}}</h2> -->
-                    <input class="form-input" type="text" placeholder="Nombre del representante" [(ngModel)]="user.name" re>
+                    <input class="form-input" type="text" placeholder="Nombre del representante" [(ngModel)]="user.name" readonly>
                 </ion-col>
             </ion-row>
             <ion-row align-items-center > 
                 <ion-col size="6">
                     <h2 class="title" >Representado:</h2>
-                    <input class="form-input" type="text" placeholder="Nombre del representante" [(ngModel)]="student.name" readonly>
-                    <!-- <p class="subtitle">{{student.name}}</p> -->
+                    <input class="form-input" type="text" placeholder="Nombre del Representado" [(ngModel)]="student.name" readonly>
                 </ion-col>
                 <ion-col size="6">
                     <img class="profile-photo" src="{{student.photo}}" alt="">
@@ -42,21 +41,20 @@
             <ion-row> 
                 <ion-col size="12">
                     <h2 class="title">Telefono:</h2>
-                    <!-- <p class="subtitle">{{user.phone}}</p> -->
-                    <input class="form-input" type="text" placeholder="Nombre del representante" [(ngModel)]="user.phone">
+                    <input class="form-input" type="text" placeholder="Teléfono" [(ngModel)]="user.phone">
                 </ion-col>
-                <ion-col size="12">
-                    <h2 class="title">Correo Electronico:</h2>
-                    <!-- <p class="subtitle">{{user.email}}</p> -->
-                    <input class="form-input" type="text" placeholder="Nombre del representante" [(ngModel)]="user.email" >
-                </ion-col>
-                <ion-col size="12">
+                <!-- <ion-col size="12">
                     <h2 class="title">Direccion:</h2>
-                    <!-- <p class="subtitle">{{student.address}}</p> -->
-                    <input class="form-input" type="text" placeholder="Nombre del representante" [(ngModel)]="user.address">
+                    
+                    <input class="form-input" type="text" placeholder="Dirección" [(ngModel)]="user.address" readonly>
+                </ion-col> -->
+
+                <ion-col size="12">
+                    <h2 class="title">Cambiar Contraseña:</h2>
+                    <input class="form-input" type="password" placeholder="Nueva Contraseña" [(ngModel)]="password">
                 </ion-col>
                 <ion-col size="12">
-                    <button (click)="registerRepresentative()" class="form-btn-save cta">Guardar Cambios
+                    <button (click)="saveChanges()" class="form-btn-save cta">Guardar Cambios
                         <span>
                             <img src="assets/png/wmb_assets_icon_save.png" alt="">
                         </span>
