@@ -5,6 +5,7 @@ import { StudentsService } from './students.service';
 import { GeolocationService } from './geolocation.service';
 import { NotificationService } from './notification.service';
 import { CTAService } from './cta.service';
+import { ApiService } from './api.service';
 @NgModule({
   imports: [
     CommonModule
@@ -13,10 +14,10 @@ import { CTAService } from './cta.service';
   providers: [
     StudentsService,
     AuthService,
+    ApiService,
     GeolocationService,
     NotificationService,
-    CTAService
-    
+    CTAService   
   ]
 })
 export class ServicesModule { }
