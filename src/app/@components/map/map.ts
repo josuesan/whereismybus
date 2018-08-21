@@ -10,7 +10,6 @@ declare const L;
 export class MapComponent {
     private latInitial = Number("10.500000");
     private lngInitial  = Number("-66.916664");
-    private myMap;
     constructor(private geolocationService:GeolocationService){
 
     }
@@ -27,10 +26,9 @@ export class MapComponent {
 
         setTimeout(() => {
             map.invalidateSize();
-            console.log("invalidate");
           }, 1000);
           
-        this.geolocationService.todo();
+        this.geolocationService.updateMapInfo();
     }
 
 }
