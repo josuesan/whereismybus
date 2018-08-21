@@ -12,8 +12,9 @@ export class EditProfilePage {
     public userType: string = "representative";
     public user = {} as User;
     public student = {} as Student;
+    public password: string = "";
 
-    constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) { }
+    constructor(private cta: CTAService, private authService: AuthService, private router: Router, private studentService: StudentsService) { }
 
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
@@ -31,7 +32,31 @@ export class EditProfilePage {
         } else this.cta.goToLogin();
     }
 
-    goHome(){
+    goHome() {
         this.cta.goToHome();
+    }
+
+    public redirect(ruta: string) {
+        this.cta.redirect(ruta);
+    }
+
+    public saveChanges() {
+
+        if (this.user.phone != "") {
+            this.studentService.updateRepresentative(this.user.id, this.user).then(() => {
+                console.log("Perfil Editado");
+                if (this.password != "") {
+                    if (this.password.length >= 6) {
+                        this.authService.changePassword(this.password).then(() => {
+                            console.log("Contraseña cambiada");
+
+                        }).catch((err) => console.error(err));
+                    }
+                    else console.log("La contraseña debe contener al menos 6 caracteres")
+                    this.password = "";
+                }
+            }).catch((err) => console.error(err));
+
+        } else console.log("Campos vacíos");
     }
 }

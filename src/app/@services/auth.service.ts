@@ -84,6 +84,13 @@ export class AuthService {
         return this.afAuth.auth.signOut();
     }
 
+    /**
+     *  Function to change password of a user
+     */
+    public async changePassword(password: string) {
+        return await this.afAuth.auth.currentUser.updatePassword(password);
+    }
+
 
 }
 

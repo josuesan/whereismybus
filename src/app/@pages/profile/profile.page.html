@@ -48,10 +48,10 @@
                 </ion-col>
                 <ion-col size="12">
                     <h2 class="title">Direccion:</h2>
-                    <p class="subtitle">{{student.address}}</p>
+                    <p class="subtitle">{{user.address}}</p>
                 </ion-col>
                 <ion-col size="12">
-                        <button class="form-btn cta"><span><img src="assets/svg/wmb_assets_icon_profile.svg" alt=""></span>  Editar perfil</button>
+                        <button class="form-btn cta" (click)="redirect('edit-profile');"><span><img src="assets/svg/wmb_assets_icon_profile.svg" alt=""></span>  Editar perfil</button>
                 </ion-col>
             </ion-row>
         </ion-grid>

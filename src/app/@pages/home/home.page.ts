@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService, CTAService } from "../../@services";
-import { User } from "../../#interfaces";
 import { ModalController } from '@ionic/angular';
 import { RegisterPlaceComponent } from "../../@components";
 
@@ -14,20 +13,24 @@ export class HomePage {
   public email: string;
   public password: string;
   public userType: string = "";
+  public firstTime: boolean;
 
   constructor(private modalController: ModalController,private authService: AuthService, private cta:CTAService) {
   }
 
   ngOnInit() {
     this.displayMenu();
-    this.presentModal();
   }
 
   async displayMenu(){
     let currentUser = await this.authService.getCurrentUser();
     if (currentUser != null) {
-      this.authService.getUserData(currentUser.uid).then((doc) => {
-        if (doc.exists) this.userType = (doc.data() as User).role;
+      await this.authService.getUserData(currentUser.uid).then((doc) => {
+        if (doc.exists){
+          this.userType = doc.data().role;
+          this.firstTime = doc.data().firstTime;
+          if (this.userType == "representative" && this.firstTime == true) this.presentModal();
+        }
         else this.cta.goToHome();
       }).catch((err) => console.error(err));
     }

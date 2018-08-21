@@ -70,4 +70,12 @@ export class StudentsService {
     public async getRepresentative(id){
         return await this.afs.collection("users").ref.where("student", "==", id).get();
     }
+
+     /**
+     * Function to update fields of a representative
+     * @param student 
+     */
+    public async updateRepresentative(id, data){
+        return await this.afs.collection("users").doc(id).update(data);
+    }
 }

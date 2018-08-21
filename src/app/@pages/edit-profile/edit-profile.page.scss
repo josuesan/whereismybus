@@ -61,3 +61,53 @@ $gray: #cecece;
     }
 
 }
+.form-btn-save{
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    color: $greenD;
+    span{
+        margin-left: 5px;
+        img{
+            vertical-align: middle;
+            height: 80%;
+        }
+    }
+    &:hover{
+        /*background-color: $orange;
+        color: white;*/
+    }
+    
+}
+.form-btn{
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    color: $red;
+    span{
+        margin-left: 5px;
+        img{
+            vertical-align: middle;
+            height: 80%;
+        }
+    }
+    &:hover{
+        /*background-color: $orange;
+        color: white;*/
+    }
+    
+}
+.form-input{
+    display: block;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid $orange;
+    margin: 12px auto;
+    width: 80%;
+    max-width: 360px;  
+    background-color: transparent;
+}

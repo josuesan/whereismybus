@@ -34,4 +34,8 @@ export class ProfilePage {
     goHome(){
         this.cta.goToHome();
     }
+
+    public redirect(ruta: string) {
+        this.cta.redirect(ruta);
+    }
 }
