@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/app';
+import { functions } from 'firebase/app';
+import  * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { first } from 'rxjs/operators';
 import { Notification } from '../#interfaces';
+import { Http, Headers } from '@angular/http';
 
 //import { Badge } from '@ionic-native/badge';
 @Injectable()
 export class NotificationService {
+
+    protected headers: Headers;
+    private urlCloudFunction = "https://us-central1-whereismybus-a7ffe.cloudfunctions.net/cleanMessageHistory"
     /*constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, private badge:Badge) {}*/
-    constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore) {}
+    constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, protected http: Http) {}
 
     /**
      * Function to get all messages (Observable mode)
@@ -39,9 +44,10 @@ export class NotificationService {
      * Function to  clean message history
      * @param student 
      */
-    public async cleanHistory(){
-        let cleanMessageHistory = firebase.functions().httpsCallable('cleanMessageHistory');
-        return await cleanMessageHistory({});
+    public cleanHistory(){
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        return this.http.get( this.urlCloudFunction ,{ headers: this.headers})
     }
 
 

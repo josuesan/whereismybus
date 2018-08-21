@@ -18,19 +18,20 @@ export class MessageComponent {
   ngOnInit() {
     var currentUser = this.authService.getCurrentUser();
     if (currentUser != null) {
-      this.messages = [];
+      
       this.messageService.getObsMessages().subscribe((data) => {
-        
+        this.messages = [];
         data.forEach((doc) => {
-          this.message = doc.payload.doc.data() as Notification;
-          this.authService.getUserData(this.message.driver).then((docUser) => {
+          var message = doc.payload.doc.data() as Notification;
+          this.authService.getUserData(message.driver).then((docUser) => {
             if (docUser.exists) {
-              this.driver = docUser.data() as User;
-              this.messages.push({driver: this.driver, data:this.message});
+              var driver = docUser.data() as User;
+              this.messages.push({driver: driver, data: message});
             }
-            // else this.cta.goToHome();
+
           });
-        })
+        });
+        console.log(this.messages);
 
 
       });

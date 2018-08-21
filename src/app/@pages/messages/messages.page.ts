@@ -33,21 +33,16 @@ export class MessagesPage {
     if (currentUser != null) {
       this.message.driver = currentUser.uid;
       this.messageService.addNewMessage(this.message).then((docRef) => {
-        console.log("Mensaje agregado")
-        // this.messageService.updateMessage(docRef.id, { id: docRef.id }).then(() => {
-        //   console.log("Mensaje agregado")
-        //   this.message = {} as Notification;
-        // })
-        //   .catch((err) => console.error(err));
+        console.log("Mensaje agregado");
       });
     } 
     else this.cta.goToLogin();
   }
 
-  async cleanHistory(){
-    await this.messageService.cleanHistory().then((result) => {
-      console.log(result);
-    }).catch((err) => console.error(err));
+   cleanHistory(){
+     let response = this.messageService.cleanHistory().toPromise();
+     console.log(response);
+      
   }
 
 

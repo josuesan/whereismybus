@@ -4,7 +4,12 @@ const admin = require('firebase-admin');
 //Firebase Init
 admin.initializeApp(functions.config().firebase);
 
+const settings = {timestampsInSnapshots: true};
+admin.firestore().settings(settings);
+
 const cors = require('cors')({ origin: true });
+
+
 
 exports.saveLocation = functions.https.onRequest((request, response) => {
     return cors(request, response, () => {
@@ -32,22 +37,27 @@ exports.saveLocation = functions.https.onRequest((request, response) => {
 });
 
 //Limpiar historial de messages
-exports.cleanMessageHistory = functions.https.onCall((data, context) => {
-    return admin.firestore()
-        .collection("messages")
-        .get()
-        .then((docs) => {
-            docs.forEach((doc) => {
-                admin.firestore()
-                    .collection("messages")
-                    .doc(doc.id)
-                    .delete();
-            });
-            console.log("Clean History");
-            return "Clean History";
-        })
-        .catch((err) => {
-            console.error(err);
-            return err;
-        })
+exports.cleanMessageHistory = functions.https.onRequest((request, response) => {
+
+    return cors(request, response, () => {
+        admin.firestore()
+            .collection("messages")
+            .get()
+            .then((docs) => {
+                docs.forEach((doc) => {
+                    admin.firestore()
+                        .collection("messages")
+                        .doc(doc.id)
+                        .delete();
+                });
+                const code = {
+                    code: 200,
+                    status: "complete"
+                }
+                return response.status(200).set('Content-Type', 'application/json').send(code);
+            })
+            .catch((err) => {
+                return response.status(500).send(err)
+            })
+    });
 })
