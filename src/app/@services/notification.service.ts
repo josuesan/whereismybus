@@ -17,10 +17,10 @@ export class NotificationService {
     constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, protected http: Http) {}
 
     /**
-     * Function to get all messages (Observable mode)
+     * Function to get all messages (Promise mode)
      */
-    public getObsMessages(){
-        return this.afs.collection("messages", ref => ref.orderBy("createdAt","desc")).snapshotChanges();
+    public async getMessages(){
+        return await this.afs.collection("messages").ref.orderBy("createdAt","desc").get();
     }
 
     /**
