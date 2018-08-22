@@ -35,5 +35,4 @@ export class MessageComponent {
     } else this.cta.goToLogin();
   }
 
-  
 }
