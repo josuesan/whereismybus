@@ -11,7 +11,7 @@ export class LoginPage {
   public email: string;
   public password: string;
   public userType: string = "";
-  private msgError="Error";
+
   constructor(private notificationService:NotificationService, private cta:CTAService,private authService: AuthService, private router: Router) { }
 
   ngOnInit(){
@@ -22,7 +22,7 @@ export class LoginPage {
     if (this.email != "" && this.password != "") {
       this.authService.loginUser(this.email, this.password).then((result) => {
         if (result[0] == true) this.cta.goToHome();
-        else this.notificationService.createTosty(this.msgError);
+        else {this.notificationService.createTosty(result[1].message, false);} 
       });
     }
   }

@@ -51,7 +51,9 @@ export class NotificationService {
         return this.http.get( this.urlCloudFunction ,{ headers: this.headers})
     }
 
-    public async createTosty(message) {
+    public async createTosty(message, op) {
+        // if op == true => success
+        //else error
         const toast = await this.toast.create({
           message: message,
           showCloseButton: true,

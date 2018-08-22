@@ -20,7 +20,7 @@
     <app-navbar [userType]="userType"></app-navbar>
     <button class="btn-msg cta" *ngIf="userType == 'busDriver'" (click)="cleanHistory()">Limpiar Historial <span><img src="assets/png/wmb_assets_icon_delete.png" alt=""></span></button>
     <button class="btn-msg cta"  *ngIf="userType == 'busDriver'">Mensajes predeterminados <span><img src="assets/png/wmb_assets_icon_driver_status.png" alt=""></span></button>
-    <app-message></app-message>
+    <app-message [messages]="messages"></app-message>
     <ion-grid class="write-box no-pd" *ngIf="userType == 'busDriver'">
         <ion-row align-items-center>
             <ion-col size="12" class="flex no-pd write-area" >

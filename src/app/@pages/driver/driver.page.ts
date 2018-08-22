@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, CTAService } from "../../@services";
+import { AuthService, CTAService, NotificationService } from "../../@services";
 import { User } from "../../#interfaces";
 @Component({
   selector: 'app-driver',
@@ -10,7 +10,7 @@ export class DriverPage {
     public userType:string = "admin";
     public user = {} as User;
 
-    constructor(private cta:CTAService,private authService: AuthService){}
+    constructor(private notificationService:NotificationService, private cta:CTAService,private authService: AuthService){}
 
     goHome(){
         this.cta.goToHome();
@@ -29,9 +29,9 @@ export class DriverPage {
                     console.log("Registro exitoso");
                     this.user = {} as User;
                 }
-                else console.error(result[1]);
+                else this.notificationService.createTosty(result[1].message, false);
             })
-            .catch((err) => console.error(err));
+            .catch((err) => this.notificationService.createTosty(err.message,false));
         }
     }
 }
