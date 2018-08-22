@@ -6,6 +6,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { first } from 'rxjs/operators';
 import { Notification } from '../#interfaces';
 import { Http, Headers } from '@angular/http';
+import { ToastController } from '@ionic/angular';
 
 //import { Badge } from '@ionic-native/badge';
 @Injectable()
@@ -14,7 +15,7 @@ export class NotificationService {
     protected headers: Headers;
     private urlCloudFunction = "https://us-central1-whereismybus-a7ffe.cloudfunctions.net/cleanMessageHistory"
     /*constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, private badge:Badge) {}*/
-    constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, protected http: Http) {}
+    constructor(private toast:ToastController, private afAuth: AngularFireAuth,private afs: AngularFirestore, protected http: Http) {}
 
     /**
      * Function to get all messages (Observable mode)
@@ -50,7 +51,16 @@ export class NotificationService {
         return this.http.get( this.urlCloudFunction ,{ headers: this.headers})
     }
 
-
+    public async createTosty(message) {
+        const toast = await this.toast.create({
+          message: message,
+          showCloseButton: true,
+          position: 'top',
+          closeButtonText: 'Done',
+          duration: 5000
+        });
+        toast.present();
+    }
 
 
 
