@@ -55,12 +55,9 @@ export class MessagesPage {
       this.message.driver = currentUser.uid;
       
       this.messageService.addNewMessage(this.message).then((docRef) => {
-        let driverActual = this.driver;
-      let messageActual = this.message;
-        this.messages.reverse()
-        this.messages.push({driver: driverActual, data: messageActual});
-        this.messages.reverse()
         console.log("Mensaje agregado");
+        this.messageService.createTosty("Message Sent.",true);
+        this.cta.goToHome();
       }).catch((err) => this.messageService.createTosty(err.message, false));
     }
     else this.cta.goToLogin();
@@ -68,7 +65,11 @@ export class MessagesPage {
 
   cleanHistory() {
     this.messageService.cleanHistory().toPromise().then((res) => {
-      console.log(res);
+      if (res.ok){
+        this.messageService.createTosty("Cleaned History.",true);
+        this.cta.goToHome();
+      }
+      else this.messageService.createTosty(res.text, false);
     }).catch((err) => this.messageService.createTosty(err.message, false));
 
   }

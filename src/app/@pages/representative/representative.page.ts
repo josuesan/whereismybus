@@ -37,7 +37,7 @@ export class RepresentativePage {
             this.user.firstTime = true;
             this.authService.registerUser(this.user).then((result) => {
                 if (result[0] == true) {
-                    console.log("Registro exitoso");
+                    this.notificationService.createTosty("Representative created.",true);
                     this.user = {} as User;
                 }
                 else this.notificationService.createTosty(result[1].message, false);

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AuthService, StudentsService } from "../../@services";
-import { Router } from '@angular/router';
+import { AuthService, StudentsService, NotificationService, CTAService } from "../../@services";
 
 @Component({
   selector: 'app-state',
@@ -12,7 +11,7 @@ export class StateComponent {
   @Input("userType") public type: string = " ";
   @Input("students") public students: any = [];
 
-  constructor(private authService: AuthService, private router: Router, private studentService: StudentsService) { }
+  constructor(private cta: CTAService, private authService: AuthService, private studentService: StudentsService, private notificationService:NotificationService) { }
 
   ngOnInit() { }
 
@@ -21,9 +20,9 @@ export class StateComponent {
     
     if (currentUser != null) {
       this.studentService.changeStateStudent(id, state).then(() => { })
-        .catch(err => console.error(err));
+        .catch(err => this.notificationService.createTosty(err.message, false));
 
-    } else this.router.navigate(['/login']);
+    } else this.cta.goToLogin();
   }
 
   customActionSheetOptions: any = {

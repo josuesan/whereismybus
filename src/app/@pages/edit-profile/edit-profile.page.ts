@@ -51,11 +51,11 @@ export class EditProfilePage {
 
                         }).catch((err) =>  this.notificationService.createTosty(err.message, false));
                     }
-                    else this.notificationService.createTosty("The password must contain at least 6 characters",false);
+                    else this.notificationService.createTosty("The password must contain at least 6 characters.",false);
                     this.password = "";
                 }
             }).catch((err) => this.notificationService.createTosty(err.message,false));
 
-        } else this.notificationService.createTosty("Empty fields", false);
+        } else this.notificationService.createTosty("Empty fields.", false);
     }
 }

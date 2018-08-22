@@ -26,7 +26,7 @@ export class DriverPage {
             this.user.role = "busDriver";
             this.authService.registerUser(this.user).then((result) => {
                 if (result[0] == true) {
-                    console.log("Registro exitoso");
+                    this.notificationService.createTosty("Driver created.", true);
                     this.user = {} as User;
                 }
                 else this.notificationService.createTosty(result[1].message, false);

@@ -25,7 +25,7 @@ export class StudentsPage {
             this.studentService.registerStudent(this.student).then((docRef) => {
                 
                 this.studentService.updateStudent(docRef.id, {id: docRef.id}).then(() => {
-                    console.log("Agregando estudiante")
+                    this.notificationService.createTosty("Student created.", true);
                     this.student = {} as Student;
                 })
                 .catch((err) => this.notificationService.createTosty(err.message,false));
