@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, CTAService } from "../../@services";
+import { AuthService, CTAService, NotificationService } from "../../@services";
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,8 +11,8 @@ export class LoginPage {
   public email: string;
   public password: string;
   public userType: string = "";
-
-  constructor(private cta:CTAService,private authService: AuthService, private router: Router) { }
+  private msgError="Error";
+  constructor(private notificationService:NotificationService, private cta:CTAService,private authService: AuthService, private router: Router) { }
 
   ngOnInit(){
     if (this.authService.getCurrentUser() != null) this.cta.goToHome();
@@ -22,7 +22,7 @@ export class LoginPage {
     if (this.email != "" && this.password != "") {
       this.authService.loginUser(this.email, this.password).then((result) => {
         if (result[0] == true) this.cta.goToHome();
-        else console.error(result[1]);
+        else this.notificationService.createTosty(this.msgError);
       });
     }
   }
