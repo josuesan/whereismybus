@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'students', loadChildren: './@pages/students/students.module#StudentsPageModule' },
   { path: 'edit-profile', loadChildren: './@pages/edit-profile/edit-profile.module#EditProfilePageModule' },
   { path: 'maps', loadChildren: './@pages/maps/maps.module#MapsPageModule' },
+  { path: 'default-messages', loadChildren: './@pages/default-messages/default-messages.module#DefaultMessagesPageModule' },
 ];
 
 @NgModule({
