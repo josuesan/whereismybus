@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CTAService, AuthService, NotificationService } from '../../@services';
 import { Notification } from "../../#interfaces";
 
@@ -15,6 +15,10 @@ export class MessagesPage {
 
   ngOnInit() {
     this.verifyRole();
+    
+  }
+  ngAfterViewInit(){
+    this.placeholder();
   }
 
   async verifyRole() {
@@ -48,5 +52,12 @@ export class MessagesPage {
 
   goHome() {
     this.cta.goToHome();
+  }
+  placeholder(){
+    var editable = document.getElementById('message');
+    console.log(editable);
+    /*this.men.nativeElement.addEventListener('input', function() {
+        console.log('Hey, somebody changed something in my text!');
+    });*/
   }
 }

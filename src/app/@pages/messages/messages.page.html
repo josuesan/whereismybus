@@ -24,7 +24,9 @@
     <ion-grid class="write-box no-pd" *ngIf="userType == 'busDriver'">
         <ion-row align-items-center>
             <ion-col size="12" class="flex no-pd write-area" >
-                <input class="input-msg text" type="text" placeholder="Escribe un mensaje" [(ngModel)]="message.message" >
+                <div class="input-msg text" contenteditable="true"  >
+                    <p id="message" #message name="message" [(ngModel)]="message.message">Escribe un mensaje</p>
+                </div>
                 <button class="btn-write-msg" (click) = "saveNewMessage()"><img src="assets/svg/icon_send_message.svg" alt=""></button>
             </ion-col>
         </ion-row>
