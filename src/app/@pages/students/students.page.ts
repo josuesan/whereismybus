@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, StudentsService, CTAService } from "../../@services";
+import { AuthService, StudentsService, CTAService, NotificationService } from "../../@services";
 import { Router } from '@angular/router';
 import { Student } from "../../#interfaces";
 
@@ -12,7 +12,7 @@ export class StudentsPage {
     public userType: string = "admin";
     public student = {} as Student;
 
-    constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) { }
+    constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService, private notificationService:NotificationService) { }
 
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
@@ -25,13 +25,13 @@ export class StudentsPage {
             this.studentService.registerStudent(this.student).then((docRef) => {
                 
                 this.studentService.updateStudent(docRef.id, {id: docRef.id}).then(() => {
-                    console.log("Agregando estudiante")
+                    this.notificationService.createTosty("Student created.", true);
                     this.student = {} as Student;
                 })
-                .catch((err) => console.error(err));
+                .catch((err) => this.notificationService.createTosty(err.message,false));
                 
             })
-            .catch((err) => console.error(err));
+            .catch((err) => this.notificationService.createTosty(err.message,false));
         }
     }
     goHome(){

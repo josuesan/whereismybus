@@ -18,10 +18,10 @@ export class NotificationService {
     constructor(private toast:ToastController, private afAuth: AngularFireAuth,private afs: AngularFirestore, protected http: Http) {}
 
     /**
-     * Function to get all messages (Observable mode)
+     * Function to get all messages (Promise mode)
      */
-    public getObsMessages(){
-        return this.afs.collection("messages", ref => ref.orderBy("createdAt","desc")).snapshotChanges();
+    public async getMessages(){
+        return await this.afs.collection("messages").ref.orderBy("createdAt","desc").get();
     }
 
     /**
@@ -51,7 +51,9 @@ export class NotificationService {
         return this.http.get( this.urlCloudFunction ,{ headers: this.headers})
     }
 
-    public async createTosty(message) {
+    public async createTosty(message, op) {
+        // if op == true => success
+        //else error
         const toast = await this.toast.create({
           message: message,
           showCloseButton: true,

@@ -10,34 +10,28 @@ import { User, Notification } from "../../#interfaces";
 export class MessageComponent {
 
   public driver = {} as User;
-  public messages: any[];
-  public message = {} as Notification;
+  @Input("messages") public messages: any[];
 
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
 
   ngOnInit() {
-    var currentUser = this.authService.getCurrentUser();
-    if (currentUser != null) {
+    // var currentUser = this.authService.getCurrentUser();
+    // if (currentUser != null) {
       
-      this.messageService.getObsMessages().subscribe((data) => {
-        this.messages = [];
-        data.forEach((doc) => {
-          var message = doc.payload.doc.data() as Notification;
-          this.authService.getUserData(message.driver).then((docUser) => {
-            if (docUser.exists) {
-              var driver = docUser.data() as User;
-              this.messages.push({driver: driver, data: message});
-            }
+    //   this.messageService.getMessages().then((data) => {
+    //     this.messages = [];
+    //     data.forEach((doc) => {
+    //       var message = doc.data() as Notification;
+    //       this.authService.getUserData(message.driver).then((docUser) => {
+    //         if (docUser.exists) {
+    //           var driver = docUser.data() as User;
+    //           this.messages.push({driver: driver, data: message});
+    //         }
+    //       }).catch((err) =>this.messageService.createTosty(err.message));
+    //     });
+    //   }).catch((err) => this.messageService.createTosty(err.message));
 
-          });
-        });
-        console.log(this.messages);
-
-
-      });
-
-    } else this.cta.goToLogin();
+    // } else this.cta.goToLogin();
   }
 
-  
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, CTAService } from "../../@services";
+import { AuthService, CTAService, NotificationService } from "../../@services";
 import { ModalController } from '@ionic/angular';
 import { RegisterPlaceComponent } from "../../@components";
 
@@ -15,7 +15,7 @@ export class HomePage {
   public userType: string = "";
   public firstTime: boolean;
 
-  constructor(private modalController: ModalController,private authService: AuthService, private cta:CTAService) {
+  constructor(private notificationService:NotificationService, private modalController: ModalController,private authService: AuthService, private cta:CTAService) {
   }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class HomePage {
           if (this.userType == "representative" && this.firstTime == true) this.presentModal();
         }
         else this.cta.goToHome();
-      }).catch((err) => console.error(err));
+      }).catch((err) => this.notificationService.createTosty(err.message,false));
     }
     else this.cta.goToLogin();
   }

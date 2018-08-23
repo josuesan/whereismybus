@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, StudentsService, CTAService } from "../../@services";
+import { AuthService, StudentsService, CTAService, NotificationService } from "../../@services";
 import { Router } from '@angular/router';
 import { Student, User } from "../../#interfaces";
 
@@ -13,7 +13,7 @@ export class RepresentativePage {
     public students: Student[];
     public user = {} as User;
 
-    constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) { }
+    constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService, private notificationService:NotificationService) { }
 
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
@@ -37,12 +37,12 @@ export class RepresentativePage {
             this.user.firstTime = true;
             this.authService.registerUser(this.user).then((result) => {
                 if (result[0] == true) {
-                    console.log("Registro exitoso");
+                    this.notificationService.createTosty("Representative created.",true);
                     this.user = {} as User;
                 }
-                else console.error(result[1]);
+                else this.notificationService.createTosty(result[1].message, false);
             })
-                .catch((err) => console.error(err));
+                .catch((err) => this.notificationService.createTosty(err.message, false));
         }
     }
     goHome(){

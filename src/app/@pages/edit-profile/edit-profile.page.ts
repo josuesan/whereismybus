@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, StudentsService, CTAService } from "../../@services";
+import { AuthService, StudentsService, CTAService, NotificationService } from "../../@services";
 import { User, Student } from "../../#interfaces";
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class EditProfilePage {
     public student = {} as Student;
     public password: string = "";
 
-    constructor(private cta: CTAService, private authService: AuthService, private router: Router, private studentService: StudentsService) { }
+    constructor(private notificationService:NotificationService, private cta: CTAService, private authService: AuthService, private router: Router, private studentService: StudentsService) { }
 
     ngOnInit() {
         var currentUser = this.authService.getCurrentUser();
@@ -49,13 +49,13 @@ export class EditProfilePage {
                         this.authService.changePassword(this.password).then(() => {
                             console.log("Contraseña cambiada");
 
-                        }).catch((err) => console.error(err));
+                        }).catch((err) =>  this.notificationService.createTosty(err.message, false));
                     }
-                    else console.log("La contraseña debe contener al menos 6 caracteres")
+                    else this.notificationService.createTosty("The password must contain at least 6 characters.",false);
                     this.password = "";
                 }
-            }).catch((err) => console.error(err));
+            }).catch((err) => this.notificationService.createTosty(err.message,false));
 
-        } else console.log("Campos vacíos");
+        } else this.notificationService.createTosty("Empty fields.", false);
     }
 }
