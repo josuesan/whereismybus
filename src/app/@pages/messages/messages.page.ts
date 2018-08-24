@@ -85,6 +85,11 @@ export class MessagesPage {
   goHome() {
     this.cta.goToHome();
   }
+
+  public redirect(ruta: string) {
+    this.cta.redirect(ruta);
+  }
+
   placeholder(){
     var editable = document.querySelector('#message');
     editable.addEventListener('focus', function() {
