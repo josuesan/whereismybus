@@ -81,3 +81,8 @@ $gray: #cecece;
         }
     }
 }
+
+#message{
+    -webkit-user-select: initial;
+    user-select: initial;
+}
