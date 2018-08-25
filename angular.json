@@ -40,18 +40,18 @@
               },
               {
                 "input": "src/assets/leaflet/leaflet.css"
-              },
-              {
-                "input": "src/assets/leaflet/leaflet-routing-machine.css"
               }
+              /*{
+                "input": "src/assets/leaflet/leaflet-routing-machine.css"
+              }*/
             ],
             "scripts": [
               {
               "input": "src/assets/leaflet/leaflet.js"
-              },
-              {
-              "input": "src/assets/leaflet/leaflet-routing-machine.min.js"
               }
+              /*{
+              "input": "src/assets/leaflet/leaflet-routing-machine.min.js"
+              }*/
           ]
           },
           "configurations": {

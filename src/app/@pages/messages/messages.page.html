@@ -25,8 +25,8 @@
         <ion-row align-items-center>
             <ion-col size="12" class="flex no-pd write-area" >
                 <div class="input-msg text">
-                    <p id="message" contenteditable="true" >Escribe un mensaje</p>
-                </div>
+                    <p id="message" contenteditable="true" (blur)="setPlaceholder($event)" (focus)="erasePlaceholder($event)">Escribe un mensaje</p>
+                </div> 
                 <button class="btn-write-msg" (click) = "saveNewMessage()"><img src="assets/svg/icon_send_message.svg" alt=""></button>
             </ion-col>
         </ion-row>

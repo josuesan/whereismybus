@@ -23,15 +23,6 @@ export class MessagesPage {
     } else this.cta.goToLogin();
   }
 
-  ngAfterViewInit(){
-    var self=this;
-    setTimeout( ()=>{
-      self.placeholder();
-    }, 5000);
-
-    
-  }
-
   getMessages() {
     this.messageService.getMessages().then((data) => {
       this.messages = [];
@@ -85,15 +76,14 @@ export class MessagesPage {
   goHome() {
     this.cta.goToHome();
   }
-  placeholder(){
-    var editable = document.querySelector('#message');
-    editable.addEventListener('focus', function() {
-        var men = document.querySelector('#message');
-        if(men.innerHTML=="Escribe un mensaje") men.innerHTML="";
-    });
-    editable.addEventListener('blur', function() {
-      var men = document.querySelector('#message');
-      if(men.innerHTML=="")  men.innerHTML="Escribe un mensaje";
-  });
+
+  erasePlaceholder(event){
+    var target = event.target || event.srcElement || event.currentTarget;
+    if(target.innerHTML=="Escribe un mensaje") target.innerHTML="";
+  }
+  setPlaceholder(event){
+    var target = event.target || event.srcElement || event.currentTarget;
+    if(target.innerHTML=="")  target.innerHTML="Escribe un mensaje";
+
   }
 }
