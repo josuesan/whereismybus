@@ -27,7 +27,7 @@ export class ProfilePage {
         this.cta.redirect(ruta);
     }
     async init(){
-        var currentUser = this.authService.getCurrentUser();
+        var currentUser = await this.authService.getCurrentUser();
         if (currentUser != null) {
             this.authService.getUserData(currentUser.uid).then((docUser) => {
                 if (docUser.exists) {

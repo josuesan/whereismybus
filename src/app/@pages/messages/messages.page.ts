@@ -16,11 +16,7 @@ export class MessagesPage {
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
 
   ngOnInit() {
-    var currentUser = this.authService.getCurrentUser();
-    if (currentUser != null) {
-      this.verifyRole(currentUser.uid);
-      this.getMessages();
-    } else this.cta.goToLogin();
+    this.init();
   }
 
   getMessages() {
@@ -77,7 +73,6 @@ export class MessagesPage {
     this.cta.goToHome();
   }
 
-<<<<<<< HEAD
   erasePlaceholder(event){
     var target = event.target || event.srcElement || event.currentTarget;
     if(target.innerHTML=="Escribe un mensaje") target.innerHTML="";
@@ -86,21 +81,12 @@ export class MessagesPage {
     var target = event.target || event.srcElement || event.currentTarget;
     if(target.innerHTML=="")  target.innerHTML="Escribe un mensaje";
 
-=======
-  public redirect(ruta: string) {
-    this.cta.redirect(ruta);
   }
-
-  placeholder(){
-    var editable = document.querySelector('#message');
-    editable.addEventListener('focus', function() {
-        var men = document.querySelector('#message');
-        if(men.innerHTML=="Escribe un mensaje") men.innerHTML="";
-    });
-    editable.addEventListener('blur', function() {
-      var men = document.querySelector('#message');
-      if(men.innerHTML=="")  men.innerHTML="Escribe un mensaje";
-  });
->>>>>>> c3bbaaacfa4ffdfb3c4833bcf3befe10ab707d87
+  async init(){
+    var currentUser = await this.authService.getCurrentUser();
+    if (currentUser != null) {
+      this.verifyRole(currentUser.uid);
+      this.getMessages();
+    } else this.cta.goToLogin();
   }
 }
