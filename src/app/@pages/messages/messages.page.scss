@@ -33,6 +33,9 @@ $gray: #cecece;
     position: fixed;
     width: 100%;
     bottom: 0;
+    display: block;
+    z-index: 9999;
+    
 }
 .btn-msg{
     margin: 0 auto;
