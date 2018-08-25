@@ -83,7 +83,7 @@ export class StudentsService {
     }
 
     public async saveLocationStudent(lat, lng){
-        let currentUser = this.authService.getCurrentUser().uid;
+        let currentUser = (await this.authService.getCurrentUser()).uid;
         return await this.afs.collection("users").doc(currentUser).update({firstTime: false, lat: lat, long: lng});
     }
 

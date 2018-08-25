@@ -15,8 +15,7 @@ export class StudentsPage {
     constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService, private notificationService:NotificationService) { }
 
     ngOnInit() {
-        var currentUser = this.authService.getCurrentUser();
-        if (currentUser == null) this.cta.goToLogin();
+        this.init();
     }
 
     public registerStudent() {
@@ -36,5 +35,9 @@ export class StudentsPage {
     }
     goHome(){
         this.cta.goToHome();
+    }
+    async init(){
+        var currentUser = await this.authService.getCurrentUser();
+        if (currentUser == null) this.cta.goToLogin();
     }
 }

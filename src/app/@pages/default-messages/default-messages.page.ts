@@ -8,7 +8,7 @@ import { Notification, User } from "../../#interfaces";
   styleUrls: ['default-messages.page.scss'],
 })
 export class DefaultMessagesPage {
-  public userType: string = "";
+  public userType: string = "busDriver";
   public message = {} as Notification;
   
   public driver = {} as User;
@@ -19,4 +19,7 @@ export class DefaultMessagesPage {
 
   }
 
+  public redirect(ruta: string) {
+    this.cta.redirect(ruta);
+  }
 }

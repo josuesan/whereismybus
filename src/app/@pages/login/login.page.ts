@@ -15,7 +15,7 @@ export class LoginPage {
   constructor(private notificationService:NotificationService, private cta:CTAService,private authService: AuthService, private router: Router) { }
 
   ngOnInit(){
-    if (this.authService.getCurrentUser() != null) this.cta.goToHome();
+    
   }
 
   login()  {
@@ -25,6 +25,9 @@ export class LoginPage {
         else {this.notificationService.createTosty(result[1].message, false);} 
       });
     }
+  }
+  async init(){
+    if ( await this.authService.getCurrentUser() != null) this.cta.goToHome();
   }
 }
 

@@ -69,7 +69,6 @@ export class AuthService {
     public  async getCurrentUser() {  
         let authState = await this.afAuth.authState.pipe(first()).toPromise();
         if (authState) {
-            console.log(this.afAuth.auth.currentUser);
             return this.afAuth.auth.currentUser;
         }
         else{

@@ -16,7 +16,13 @@ export class StatePage {
     constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService:StudentsService) {}
 
     ngOnInit() {
-        let currentUser = this.authService.getCurrentUser();
+        this.init();
+    }
+    goHome(){
+        this.cta.goToHome();
+    }
+    async init(){
+        let currentUser = await this.authService.getCurrentUser();
         if (currentUser != null){
             this.authService.getUserData(currentUser.uid).then((docUser) => {
                 if (docUser.exists) {
@@ -28,8 +34,5 @@ export class StatePage {
                 } else this.cta.goToHome();
             });
         } else this.cta.goToLogin();
-    }
-    goHome(){
-        this.cta.goToHome();
     }
 }

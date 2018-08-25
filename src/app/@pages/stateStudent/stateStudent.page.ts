@@ -17,7 +17,14 @@ export class StateStudentPage {
     }
 
     ngOnInit() {
-        let currentUser = this.authService.getCurrentUser();
+        this.init();
+    }
+
+    goHome(){
+        this.cta.goToHome();
+    }
+    async init(){
+        let currentUser = await this.authService.getCurrentUser();
         if (currentUser != null) {
             this.studentService.getStudents().then((docsStudents) => {
                 docsStudents.forEach(docS => {
@@ -40,9 +47,5 @@ export class StateStudentPage {
             .catch((err) => this.notificationService.createTosty(err.message, false));
 
         } else this.cta.goToLogin();
-    }
-
-    goHome(){
-        this.cta.goToHome();
     }
 }

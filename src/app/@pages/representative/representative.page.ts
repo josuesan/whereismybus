@@ -16,15 +16,7 @@ export class RepresentativePage {
     constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService, private notificationService:NotificationService) { }
 
     ngOnInit() {
-        var currentUser = this.authService.getCurrentUser();
-        if (currentUser != null) {
-            this.studentService.getObsStudents().subscribe((docs) => {
-                this.students = [];
-                docs.forEach(doc => {
-                    this.students.push(doc.payload.doc.data() as Student);
-                });
-            });
-        } else this.cta.goToLogin();
+        this.init();
     }
 
     public onChangeStudent(id) {
@@ -47,5 +39,16 @@ export class RepresentativePage {
     }
     goHome(){
         this.cta.goToHome();
+    }
+    async init(){
+        var currentUser = await this.authService.getCurrentUser();
+        if (currentUser != null) {
+            this.studentService.getObsStudents().subscribe((docs) => {
+                this.students = [];
+                docs.forEach(doc => {
+                    this.students.push(doc.payload.doc.data() as Student);
+                });
+            });
+        } else this.cta.goToLogin();
     }
 }

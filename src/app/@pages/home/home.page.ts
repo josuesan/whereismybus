@@ -23,9 +23,7 @@ export class HomePage {
   }
 
   async displayMenu(){
-    console.log("hola");
     let currentUser = await this.authService.getCurrentUser();
-    console.log(currentUser);
     if (currentUser != null) {
       await this.authService.getUserData(currentUser.uid).then((doc) => {
         if (doc.exists){

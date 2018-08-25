@@ -16,6 +16,17 @@ export class ProfilePage {
     constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) { }
 
     ngOnInit() {
+        this.init();
+    }
+
+    goHome(){
+        this.cta.goToHome();
+    }
+
+    public redirect(ruta: string) {
+        this.cta.redirect(ruta);
+    }
+    async init(){
         var currentUser = this.authService.getCurrentUser();
         if (currentUser != null) {
             this.authService.getUserData(currentUser.uid).then((docUser) => {
@@ -29,13 +40,5 @@ export class ProfilePage {
                 } else this.cta.goToHome();
             });
         } else this.cta.goToLogin();
-    }
-
-    goHome(){
-        this.cta.goToHome();
-    }
-
-    public redirect(ruta: string) {
-        this.cta.redirect(ruta);
     }
 }

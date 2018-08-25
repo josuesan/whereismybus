@@ -17,7 +17,7 @@ export class DriverPage {
     }
     
     ngOnInit() {
-        if (this.authService.getCurrentUser() == null) this.cta.goToLogin();
+        this.init();
     }
 
 
@@ -33,5 +33,8 @@ export class DriverPage {
             })
             .catch((err) => this.notificationService.createTosty(err.message,false));
         }
+    }
+    async init(){
+        if ( await this.authService.getCurrentUser() == null) this.cta.goToLogin();
     }
 }
