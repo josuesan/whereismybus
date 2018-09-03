@@ -11,6 +11,7 @@ import { Student, User } from "../../#interfaces";
 export class StateStudentPage {
     public userType: string = "busDriver";
     public students: any = [];
+    public ready: boolean = false;
 
     constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService, private notificationService:NotificationService) {
 
@@ -41,6 +42,8 @@ export class StateStudentPage {
                             });
 
                         });
+
+                        this.ready = true;
                     });
                 });
             })
