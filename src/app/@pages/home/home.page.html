@@ -16,5 +16,6 @@
 </ion-header>
 <ion-content>
     <div class="fake-nav"></div>
-    <app-dashboard [userType]="userType"></app-dashboard>
+    <app-dashboard *ngIf="ready === true" [userType]="userType"></app-dashboard>
+    <ion-spinner *ngIf="ready !== true" name="crescent" class="spin"></ion-spinner>
 </ion-content>

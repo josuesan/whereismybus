@@ -29,6 +29,7 @@ export class StatePage {
                     this.user = docUser.data() as User;
                     this.studentService.getObsStudent(this.user.student).subscribe((data) => {
                         if (data.payload.exists) this.student = data.payload.data() as Student;
+                        
                         else this.cta.goToHome();
                     });
                 } else this.cta.goToHome();

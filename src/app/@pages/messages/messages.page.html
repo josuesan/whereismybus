@@ -1,7 +1,7 @@
 <ion-header>
     <div class="header">
         <ion-grid class="no-pd max-h">
-            <ion-row align-items-center class="max-h"> 
+            <ion-row align-items-center class="max-h">
                 <ion-col size="2" class="no-pd">
                     <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="" (click)="goHome()">
                 </ion-col>
@@ -9,26 +9,41 @@
                     <ion-title class="title">Mensajes a los padres</ion-title>
                 </ion-col>
                 <ion-col size="2" class="no-pd">
-                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">   
+                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
                 </ion-col>
             </ion-row>
-        </ion-grid> 
+        </ion-grid>
     </div>
 </ion-header>
 
 <ion-content class="bg-gray">
     <app-navbar [userType]="userType"></app-navbar>
-    <button class="btn-msg cta" *ngIf="userType == 'busDriver'" (click)="cleanHistory()">Limpiar Historial <span><img src="assets/png/wmb_assets_icon_delete.png" alt=""></span></button>
-    <button class="btn-msg cta"  *ngIf="userType == 'busDriver'" (click)="redirect('default-messages')">Mensajes predeterminados <span><img src="assets/png/wmb_assets_icon_driver_status.png" alt=""></span></button>
-    <app-message [messages]="messages"></app-message>
-    <ion-grid class="write-box no-pd" *ngIf="userType == 'busDriver'">
-        <ion-row align-items-center>
-            <ion-col size="12" class="flex no-pd write-area" >
-                <div class="input-msg text">
-                    <p id="message" contenteditable="true" (blur)="setPlaceholder($event)" (focus)="erasePlaceholder($event)">Escribe un mensaje</p>
-                </div> 
-                <button class="btn-write-msg" (click) = "saveNewMessage()"><img src="assets/svg/icon_send_message.svg" alt=""></button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <div *ngIf="ready === true">
+        <button class="btn-msg cta" *ngIf="userType == 'busDriver'" (click)="cleanHistory()">Limpiar Historial
+            <span>
+                <img src="assets/png/wmb_assets_icon_delete.png" alt="">
+            </span>
+        </button>
+        <button class="btn-msg cta" *ngIf="userType == 'busDriver'" (click)="redirect('default-messages')">Mensajes predeterminados
+            <span>
+                <img src="assets/png/wmb_assets_icon_driver_status.png" alt="">
+            </span>
+        </button>
+        <app-message [messages]="messages"></app-message>
+        <ion-title class="title" *ngIf="userType !== 'busDriver' && messages.length === 0">No hay mensajes para mostrar</ion-title>
+        <ion-grid class="write-box no-pd" *ngIf="userType == 'busDriver'">
+            <ion-row align-items-center>
+                <ion-col size="12" class="flex no-pd write-area">
+                    <div class="input-msg text">
+                        <p id="message" contenteditable="true" (blur)="setPlaceholder($event)" (focus)="erasePlaceholder($event)">Escribe un mensaje</p>
+                    </div>
+                    <button class="btn-write-msg" (click)="saveNewMessage()">
+                        <img src="assets/svg/icon_send_message.svg" alt="">
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <ion-spinner *ngIf="ready !== true" name="crescent" class="spin"></ion-spinner>
 </ion-content>

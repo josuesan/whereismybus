@@ -18,7 +18,7 @@
 
 <ion-content class="bg-gray">
     <app-navbar [userType]="userType"></app-navbar>
-    <div class="card-profile bg-cards">
+    <div *ngIf="ready === true" class="card-profile bg-cards">
         <ion-grid>
             <ion-row align-items-center >
                 <ion-col size="6">
@@ -70,4 +70,6 @@
             </ion-row>
         </ion-grid>
     </div>
+
+    <ion-spinner *ngIf="ready !== true" name="crescent" class="spin"></ion-spinner>
 </ion-content>

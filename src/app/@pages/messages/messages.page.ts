@@ -10,6 +10,7 @@ import { Notification, User } from "../../#interfaces";
 export class MessagesPage {
   public userType: string = "";
   public message = {} as Notification;
+  public ready: boolean = false;
   
   public driver = {} as User;
   public messages: any[];
@@ -31,6 +32,7 @@ export class MessagesPage {
           }
         }).catch((err) => this.messageService.createTosty(err.message, false));
       });
+      this.ready = true;
     }).catch((err) => this.messageService.createTosty(err.message, false));
   }
 

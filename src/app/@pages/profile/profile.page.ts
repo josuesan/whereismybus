@@ -12,6 +12,7 @@ export class ProfilePage {
     public userType: string = "representative";
     public user = {} as User;
     public student = {} as Student;
+    public ready: boolean = false;
 
     constructor(private cta:CTAService,private authService: AuthService, private router: Router, private studentService: StudentsService) { }
 
@@ -34,7 +35,10 @@ export class ProfilePage {
                     this.user = docUser.data() as User;
 
                     this.studentService.getStudent(this.user.student).then((docStudent) => {
-                        if (docStudent.exists) this.student = docStudent.data() as Student;
+                        if (docStudent.exists){
+                            this.student = docStudent.data() as Student;
+                            this.ready = true;
+                        }
                         else this.cta.goToHome();
                     });
                 } else this.cta.goToHome();

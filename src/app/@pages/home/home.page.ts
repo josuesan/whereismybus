@@ -14,6 +14,7 @@ export class HomePage {
   public password: string;
   public userType: string = "";
   public firstTime: boolean;
+  public ready: boolean = false;
 
   constructor(private notificationService:NotificationService, private modalController: ModalController,private authService: AuthService, private cta:CTAService) {
   }
@@ -30,6 +31,7 @@ export class HomePage {
           this.userType = doc.data().role;
           this.firstTime = doc.data().firstTime;
           if (this.userType == "representative" && this.firstTime == true) this.presentModal();
+          this.ready = true;
         }
         else this.cta.goToHome();
       }).catch((err) => this.notificationService.createTosty(err.message,false));

@@ -8,6 +8,7 @@ import { GeolocationService, CTAService } from '../../@services';
 export class MapsPage {
     public time:number = 5;
     public distance:number =10;
+    public userType: string = "representative";
   constructor(private geolocationService:GeolocationService, private cta:CTAService) { }
 
   ngOnInit(){

@@ -17,6 +17,7 @@
 </ion-header>
 
 <ion-content class="bg-gray ">
+    <app-navbar [userType]="userType"></app-navbar>
     <ion-grid>
         <ion-row size="12" class="box-area">
             <p class="text">Tiempo estimado de llegada: {{time}} min.</p>
