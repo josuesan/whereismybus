@@ -30,7 +30,7 @@
             </span>
         </button>
         <app-message [messages]="messages"></app-message>
-        <ion-title class="title" *ngIf="userType !== 'busDriver' && messages.length === 0">No hay mensajes para mostrar</ion-title>
+        <p class="title bg-text" *ngIf="userType !== 'busDriver' && messages.length === 0"><img class="bg-img-text" src="assets/svg/info-solid.svg" alt="">No hay mensajes para mostrar</p>
         <ion-grid class="write-box no-pd" *ngIf="userType == 'busDriver'">
             <ion-row align-items-center>
                 <ion-col size="12" class="flex no-pd write-area">
