@@ -19,7 +19,7 @@
 <ion-content class="bg-gray">
     <app-navbar [userType]="userType"></app-navbar>
     <div *ngIf="ready === true">
-        <button class="btn-msg cta" *ngIf="userType == 'busDriver'" (click)="cleanHistory()">Limpiar Historial
+        <button class="btn-msg cta" *ngIf="userType == 'busDriver' && messages.length > 0" (click)="cleanHistory()">Limpiar Historial
             <span>
                 <img src="assets/png/wmb_assets_icon_delete.png" alt="">
             </span>

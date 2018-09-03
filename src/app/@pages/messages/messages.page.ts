@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, ComponentRef} from '@angular/core';
 import { CTAService, AuthService, NotificationService } from '../../@services';
 import { Notification, User } from "../../#interfaces";
 
@@ -11,7 +11,6 @@ export class MessagesPage {
   public userType: string = "";
   public message = {} as Notification;
   public ready: boolean = false;
-  
   public driver = {} as User;
   public messages: any[];
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
@@ -21,6 +20,7 @@ export class MessagesPage {
   }
 
   getMessages() {
+    console.log("entre")
     this.messageService.getMessages().then((data) => {
       this.messages = [];
       data.forEach((doc) => {
@@ -61,9 +61,11 @@ export class MessagesPage {
   }
 
   cleanHistory() {
+    this.ready = false;
     this.messageService.cleanHistory().toPromise().then((res) => {
       if (res.ok){
         this.messageService.createTosty("Cleaned History.",true);
+        this.ready = true;
         this.cta.goToHome();
       }
       else this.messageService.createTosty(res.text, false);
@@ -73,6 +75,9 @@ export class MessagesPage {
 
   goHome() {
     this.cta.goToHome();
+  }
+  public redirect(ruta: string) {
+    this.cta.redirect(ruta);
   }
 
   erasePlaceholder(event){
