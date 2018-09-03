@@ -89,3 +89,19 @@ $gray: #cecece;
     -webkit-user-select: initial;
     user-select: initial;
 }*/
+.bg-text{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 170px;
+    text-align: center;
+    font-size: 36px;
+    opacity: 0.5;
+}
+.bg-img-text{
+    display: block;
+    height: 80px;
+    padding: 0 0 15px 0;
+    margin: 0 auto 15px auto; 
+}
