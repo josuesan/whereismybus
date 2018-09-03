@@ -19,5 +19,5 @@
 <ion-content class="bg-gray">
     <app-navbar [userType]="userType"></app-navbar>
     <app-state *ngIf="ready === true" [students]="students"></app-state>
-    <ion-spinner *ngIf="ready !== true" name="crescent"></ion-spinner>
+    <ion-spinner *ngIf="ready !== true" name="crescent" class="spin"></ion-spinner>
 </ion-content>
