@@ -13,7 +13,7 @@ export class MessagesPage {
   public ready: boolean = false;
   public driver = {} as User;
   public messages: any[];
-  public cpRef: ComponentRef<MessagesPage>;
+  public cpRef: ComponentRef<MessagesPage> = MessagesPage;
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class MessagesPage {
   }
 
   getMessages() {
-    console.log("entre")
+
     this.messageService.getMessages().then((data) => {
       this.messages = [];
       data.forEach((doc) => {
