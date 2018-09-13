@@ -13,7 +13,7 @@ export class MessagesPage {
   public ready: boolean = false;
   public driver = {} as User;
   public messages: any[];
-  public cpRef: ComponentRef<MessagesPage> = MessagesPage;
+  // public cpRef: ComponentRef<MessagesPage> = MessagesPage;
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
 
   ngOnInit() {
@@ -78,7 +78,7 @@ export class MessagesPage {
     this.cta.goToHome();
   }
   public redirect(ruta: string) {
-    this.cpRef.destroy();
+    // this.cpRef.destroy();
     this.cta.redirect(ruta);
   }
 
