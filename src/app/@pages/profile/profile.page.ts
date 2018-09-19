@@ -37,7 +37,9 @@ export class ProfilePage {
                     this.studentService.getStudent(this.user.student).then((docStudent) => {
                         if (docStudent.exists){
                             this.student = docStudent.data() as Student;
-                            this.ready = true;
+                            setTimeout(() => {
+                                this.ready = true;
+                            }, 2000);  
                         }
                         else this.cta.goToHome();
                     });

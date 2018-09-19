@@ -1,7 +1,7 @@
 <ion-header>
     <div class="header">
         <ion-grid class="no-pd max-h">
-            <ion-row align-items-center class="max-h"> 
+            <ion-row align-items-center class="max-h">
                 <ion-col size="2" class="no-pd">
                     <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="" (click)="goHome()">
                 </ion-col>
@@ -9,10 +9,10 @@
                     <ion-title class="title">Mi Perfil</ion-title>
                 </ion-col>
                 <ion-col size="2" class="no-pd">
-                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">   
+                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
                 </ion-col>
             </ion-row>
-        </ion-grid> 
+        </ion-grid>
     </div>
 </ion-header>
 
@@ -20,24 +20,28 @@
     <app-navbar [userType]="userType"></app-navbar>
     <div *ngIf="ready === true" class="card-profile bg-cards">
         <ion-grid>
-            <ion-row align-items-center >
+            <ion-row align-items-center>
                 <ion-col size="6">
-                    <img class="profile-photo" src="{{user.photo}}" alt="">
+                    <img *ngIf='user.photo !== ""' class="profile-photo" src="{{user.photo}}" alt="">
+
+                    <img *ngIf='user.photo === ""' class="profile-photo" src="assets/profile_empty.jpg" alt="">
                 </ion-col>
                 <ion-col size="5">
                     <h2 class="title">{{user.name}}</h2>
                 </ion-col>
             </ion-row>
-            <ion-row align-items-center > 
+            <ion-row align-items-center>
                 <ion-col size="6">
-                    <h2 class="title" >Representado:</h2>
+                    <h2 class="title">Representado:</h2>
                     <p class="subtitle">{{student.name}}</p>
                 </ion-col>
                 <ion-col size="6">
-                    <img class="profile-photo" src="{{student.photo}}" alt="">
+                    <img *ngIf='student.photo !== ""' class="profile-photo" src="{{student.photo}}" alt="">
+
+                    <img *ngIf='student.photo === ""' class="profile-photo" src="assets/profile_empty.jpg" alt="">
                 </ion-col>
             </ion-row>
-            <ion-row> 
+            <ion-row>
                 <ion-col size="12">
                     <h2 class="title">Telefono:</h2>
                     <p class="subtitle">{{user.phone}}</p>
@@ -51,7 +55,10 @@
                     <p class="subtitle">{{user.address}}</p>
                 </ion-col>
                 <ion-col size="12">
-                        <button class="form-btn cta" (click)="redirect('edit-profile');"><span><img src="assets/svg/wmb_assets_icon_profile.svg" alt=""></span>  Editar perfil</button>
+                    <button class="form-btn cta" (click)="redirect('edit-profile');">
+                        <span>
+                            <img src="assets/svg/wmb_assets_icon_profile.svg" alt="">
+                        </span> Editar perfil</button>
                 </ion-col>
             </ion-row>
         </ion-grid>

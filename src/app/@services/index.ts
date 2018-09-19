@@ -8,3 +8,4 @@ export { GeolocationService } from './geolocation.service';
 export { NotificationService } from './notification.service';
 export { CTAService } from './cta.service';
 export { ApiService } from './api.service';
+export { ImageService } from './image.service';

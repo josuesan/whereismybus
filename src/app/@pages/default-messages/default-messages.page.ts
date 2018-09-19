@@ -30,7 +30,7 @@ export class DefaultMessagesPage {
       this.message.driver = currentUser.uid;
       this.message.message = msj;
       this.messageService.addNewMessage(this.message).then((docRef) => {
-        this.redirect('messages');
+        this.redirect('home');
         this.messageService.createTosty("Message Sent.", true);
       }).catch((err) => this.messageService.createTosty(err.message, false));
     }

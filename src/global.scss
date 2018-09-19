@@ -79,6 +79,11 @@
     font-family: "RobotoSlab-Bold";
 }
 
+.cta_edit{
+    font-size: 14px;
+    font-family: "RobotoSlab-Bold";
+}
+
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset;
     background-color: white !important;
@@ -134,4 +139,7 @@ input:-webkit-autofill {
     left: 50%;
     transform: translate(-50%,-50%);
     color: #ffa403;
+}
+.header{
+    padding: 15px 0px 0px 0px;
 }
