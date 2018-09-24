@@ -14,6 +14,8 @@ export class MessagesPage {
   public ready: boolean = false;
   public driver = {} as User;
   public messages: any[];
+  public existMessages = -1;
+  // public cpRef: ComponentRef<MessagesPage> = MessagesPage;
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
 
   ngOnInit() {
@@ -24,16 +26,20 @@ export class MessagesPage {
 
     this.messageService.getMessages().then((data) => {
       this.messages = [];
+      const tam = data.size;
+      let i=1;
       data.forEach((doc) => {
         var message = doc.data() as Notification;
         this.authService.getUserData(message.driver).then((docUser) => {
           if (docUser.exists) {
             var driver = docUser.data() as User;
             this.messages.push({ driver: driver, data: message });
+            if (i === tam) this.ready = true;
+            i++;
           }
         }).catch((err) => this.messageService.createTosty(err.message, false));
       });
-      this.ready = true;
+    
     }).catch((err) => this.messageService.createTosty(err.message, false));
   }
 
@@ -78,6 +84,7 @@ export class MessagesPage {
     this.cta.goToHome();
   }
   public redirect(ruta: string) {
+    // this.cpRef.destroy();
     this.cta.redirect(ruta);
   }
 

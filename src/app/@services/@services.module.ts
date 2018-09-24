@@ -6,6 +6,7 @@ import { GeolocationService } from './geolocation.service';
 import { NotificationService } from './notification.service';
 import { CTAService } from './cta.service';
 import { ApiService } from './api.service';
+import { ImageService } from './image.service';
 @NgModule({
   imports: [
     CommonModule
@@ -17,7 +18,8 @@ import { ApiService } from './api.service';
     ApiService,
     GeolocationService,
     NotificationService,
-    CTAService   
+    CTAService ,
+    ImageService  
   ]
 })
 export class ServicesModule { }

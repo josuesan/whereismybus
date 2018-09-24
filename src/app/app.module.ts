@@ -18,7 +18,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import {firebaseConfig} from './firebase.config';
 
-
+import { ImagePicker } from '@ionic-native/image-picker/ngx'
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,8 @@ import {firebaseConfig} from './firebase.config';
   ],
 
   providers: [
+    WebView,
+    ImagePicker,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
