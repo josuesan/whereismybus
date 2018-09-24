@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CTAService, AuthService, NotificationService } from '../../@services';
 import { Notification, User } from "../../#interfaces";
+import { MessagesPage } from '../messages/messages.page';
 
 @Component({
   selector: 'app-default-messages',
@@ -18,6 +19,7 @@ export class DefaultMessagesPage {
   ];
   public message = {} as Notification;
 
+  
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class DefaultMessagesPage {
       this.message.driver = currentUser.uid;
       this.message.message = msj;
       this.messageService.addNewMessage(this.message).then((docRef) => {
-        this.redirect('messages');
+        this.redirect('home');
         this.messageService.createTosty("Message Sent.", true);
       }).catch((err) => this.messageService.createTosty(err.message, false));
     }
@@ -39,5 +41,7 @@ export class DefaultMessagesPage {
 
   public redirect(ruta: string) {
     this.cta.redirect(ruta);
+    
   }
+
 }

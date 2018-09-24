@@ -7,11 +7,13 @@ import { first } from 'rxjs/operators';
 import { Notification } from '../#interfaces';
 import { Http, Headers } from '@angular/http';
 import { ToastController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 
 //import { Badge } from '@ionic-native/badge';
 @Injectable()
 export class NotificationService {
-
+    private send:boolean = false;
+    public obsMessageSend = new BehaviorSubject<any>(this.send);
     protected headers: Headers;
     private urlCloudFunction = "https://us-central1-whereismybus-a7ffe.cloudfunctions.net/cleanMessageHistory"
     /*constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, private badge:Badge) {}*/
@@ -63,7 +65,13 @@ export class NotificationService {
         });
         toast.present();
     }
-
+    public changeObsSend(value){
+        console.log("noti",value);
+        this.send = value;
+        console.log("noti",this.send);
+        this.obsMessageSend.next(this.send);
+        console.log("noti",this.obsMessageSend);
+    }
 
 
     /**

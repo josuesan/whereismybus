@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild, ComponentRef} from '@angular/core';
+import { Component, ElementRef, ViewChild, ComponentRef, ViewContainerRef,ComponentFactoryResolver} from '@angular/core';
 import { CTAService, AuthService, NotificationService } from '../../@services';
 import { Notification, User } from "../../#interfaces";
+
 
 @Component({
   selector: 'app-messages',
@@ -13,11 +14,10 @@ export class MessagesPage {
   public ready: boolean = false;
   public driver = {} as User;
   public messages: any[];
-  public cpRef: ComponentRef<MessagesPage> = MessagesPage;
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
 
   ngOnInit() {
-    this.init();
+    this.init();  
   }
 
   getMessages() {
@@ -78,7 +78,6 @@ export class MessagesPage {
     this.cta.goToHome();
   }
   public redirect(ruta: string) {
-    this.cpRef.destroy();
     this.cta.redirect(ruta);
   }
 
@@ -92,6 +91,7 @@ export class MessagesPage {
 
   }
   async init(){
+    console.log("hola");
     var currentUser = await this.authService.getCurrentUser();
     if (currentUser != null) {
       this.verifyRole(currentUser.uid);
