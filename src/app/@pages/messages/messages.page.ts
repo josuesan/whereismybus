@@ -28,7 +28,7 @@ export class MessagesPage {
       this.messages = [];
       const tam = data.size;
       let i=1;
-      if (data.size === 0){
+      if (tam === 0){
         this.ready = true;
         return;
       }
