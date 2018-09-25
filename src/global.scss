@@ -141,5 +141,14 @@ input:-webkit-autofill {
     color: #ffa403;
 }
 .header{
-    padding: 15px 0px 0px 0px;
+    //padding: 15px 0px 0px 0px;
+}
+.profile-photo{
+    border: 1px solid #332c24;
+    border-radius: 100%;
+    width: 80px !important;
+    /* max-width: 200px; */
+    display: block;
+    margin: 0 auto;
+    height: 80px !important;
 }

@@ -34,7 +34,7 @@
     "@ionic/ng-toolkit": "1.0.0",
     "@ionic/schematics-angular": "1.0.1",
     "angularfire2": "^5.0.0-rc.11",
-    "cordova-android": "7.0.0",
+    "cordova-android": "^7.0.0",
     "cordova-ios": "4.5.5",
     "cordova-plugin-badge": "^0.8.7",
     "cordova-plugin-camera": "^4.0.3",
@@ -49,7 +49,8 @@
     "promise-polyfill": "^8.1.0",
     "rxjs": "^6.3.2",
     "rxjs-compat": "^6.3.2",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "cordova-plugin-statusbar": "2.4.2"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.7.0-rc.3",
@@ -89,11 +90,12 @@
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "upload profile photo"
       },
       "cordova-plugin-camera": {},
-      "cordova-plugin-ionic-webview": {}
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-statusbar": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
