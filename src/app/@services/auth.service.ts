@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore} from 'angularfire2/firestore';
 import { first } from 'rxjs/operators';
 import { User } from '../#interfaces';
 
@@ -8,8 +8,6 @@ import { User } from '../#interfaces';
 export class AuthService {
     public currentUserRole: string = "";
     constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
-        
-        
     }
 
     /**
