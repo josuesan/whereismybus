@@ -18,7 +18,6 @@ export class StateStudentPage {
     }
 
     ngOnInit() {
-        console.log("state")
         this.init();
     }
 
