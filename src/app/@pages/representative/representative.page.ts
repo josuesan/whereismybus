@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Student, User } from "../../#interfaces";
 import { ImagePicker } from '@ionic-native/image-picker/ngx'
 
+import * as emailjs from "emailjs-com";
 @Component({
     selector: 'app-representative',
     templateUrl: 'representative.page.html',
@@ -16,16 +17,38 @@ export class RepresentativePage {
     public loading: boolean = false;
     public inputEnabled: boolean = true;
 
-    constructor(private cta:CTAService,
-        private authService: AuthService, 
-        private router: Router, 
-        private studentService: StudentsService, 
-        private notificationService:NotificationService,
+    constructor(private cta: CTAService,
+        private authService: AuthService,
+        private router: Router,
+        private studentService: StudentsService,
+        private notificationService: NotificationService,
         private imgService: ImageService,
         private imagePicker: ImagePicker) { }
 
+    public template_params = {
+        user_name: "",
+        user_email: "",
+        user_password: ""
+    }
+
+
     ngOnInit() {
         this.init();
+        /* emailjs
+       .send(
+         "gmail",
+         "whereismybus",
+         this.template_params,
+         "user_sRr7CiKa6nPrkYlEFPh8l"
+       )
+       .then(
+         response => {
+           console.log("SUCCESS!", response.status, response.text);
+         },
+         err => {
+           console.log("FAILED...", err);
+         }
+       );*/
     }
 
     public onChangeStudent(id) {
@@ -38,7 +61,7 @@ export class RepresentativePage {
             this.user.firstTime = true;
             this.authService.registerUser(this.user).then((result) => {
                 if (result[0] == true) {
-                    this.notificationService.createTosty("Representative created.",true);
+                    this.notificationService.createTosty("Representative created.", true);
                     this.user = {} as User;
                 }
                 else this.notificationService.createTosty(result[1].message, false);
@@ -47,11 +70,11 @@ export class RepresentativePage {
         }
     }
 
-    goHome(){
+    goHome() {
         this.cta.goToHome();
     }
 
-    async init(){
+    async init() {
         var currentUser = await this.authService.getCurrentUser();
         this.user.photo = "";
         if (currentUser != null) {
