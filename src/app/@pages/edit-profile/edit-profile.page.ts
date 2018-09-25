@@ -42,10 +42,6 @@ export class EditProfilePage {
     }
 
     getPicture(op) {
-        // var workingPath=  this.webview.convertFileSrc('file:///Users/dan/camera-image-12345.png'
-        // console.log(workingPath)
-
-
         this.imagePicker.hasReadPermission().then(
             (result) => {
                 if (result === false) {
