@@ -3,8 +3,8 @@ import { AuthService, StudentsService, CTAService, NotificationService, ImageSer
 import { Router } from '@angular/router';
 import { Student, User } from "../../#interfaces";
 import { ImagePicker } from '@ionic-native/image-picker/ngx'
-
 import * as emailjs from "emailjs-com";
+
 @Component({
     selector: 'app-representative',
     templateUrl: 'representative.page.html',
@@ -34,21 +34,6 @@ export class RepresentativePage {
 
     ngOnInit() {
         this.init();
-        /* emailjs
-       .send(
-         "gmail",
-         "whereismybus",
-         this.template_params,
-         "user_sRr7CiKa6nPrkYlEFPh8l"
-       )
-       .then(
-         response => {
-           console.log("SUCCESS!", response.status, response.text);
-         },
-         err => {
-           console.log("FAILED...", err);
-         }
-       );*/
     }
 
     public onChangeStudent(id) {
@@ -61,8 +46,28 @@ export class RepresentativePage {
             this.user.firstTime = true;
             this.authService.registerUser(this.user).then((result) => {
                 if (result[0] == true) {
+                    this.template_params.user_name = this.user.name;
+                    this.template_params.user_email = this.user.email;
+                    this.template_params.user_password = result[1];
+
+                    emailjs
+                        .send(
+                            "gmail",
+                            "whereismybus",
+                            this.template_params,
+                            "user_sRr7CiKa6nPrkYlEFPh8l"
+                        )
+                        .then(
+                            response => {
+                                console.log("SUCCESS!", response.status, response.text);
+                            },
+                            err => {
+                                console.log("FAILED...", err);
+                            }
+                        );
                     this.notificationService.createTosty("Representative created.", true);
                     this.user = {} as User;
+                    this.user.photo = "";
                 }
                 else this.notificationService.createTosty(result[1].message, false);
             })

@@ -35,6 +35,7 @@ export class StudentsPage {
                 this.studentService.updateStudent(docRef.id, {id: docRef.id}).then(() => {
                     this.notificationService.createTosty("Student created.", true);
                     this.student = {} as Student;
+                    this.student.photo = "";
                 })
                 .catch((err) => this.notificationService.createTosty(err.message,false));
                 
