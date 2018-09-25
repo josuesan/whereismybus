@@ -1,7 +1,7 @@
 <ion-header>
     <div class="header">
         <ion-grid class="no-pd max-h">
-            <ion-row align-items-center class="max-h"> 
+            <ion-row align-items-center class="max-h">
                 <ion-col size="2" class="no-pd">
                     <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="" (click)="goHome()">
                 </ion-col>
@@ -9,37 +9,58 @@
                     <ion-title class="title">Nuevo Chofer</ion-title>
                 </ion-col>
                 <ion-col size="2" class="no-pd">
-                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">   
+                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
                 </ion-col>
             </ion-row>
-        </ion-grid>   
+        </ion-grid>
     </div>
 </ion-header>
 
-<ion-content >
+<ion-content>
     <app-navbar [userType]="userType"></app-navbar>
     <ion-grid>
         <ion-row>
             <ion-col size="12">
                 <p class="title text-center">Foto del chofer</p>
-                <img class="profile-photo" src="assets/ludo-josue.jpg" alt="">   
-                <button class="form-btn cta" >Cargar Imagen<span><img src="assets/png/wmb_assets_icon_add_pciture.png" alt=""></span> </button>
+
+                <img *ngIf='user.photo !== ""' class="profile-photo" src="{{user.photo}}" alt="">
+                <button class="form-btn cta_edit" *ngIf='user.photo !== ""' (click)="deletePicture(user.photo)">Eliminar foto
+                    <span>
+                        <img src="assets/png/wmb_assets_icon_cancel.png" alt="">
+                    </span>
+                </button>
+
+                <img *ngIf='user.photo === ""' class="profile-photo" src="assets/profile_empty.jpg" alt="">
+                <button class="form-btn cta_edit" *ngIf='user.photo === ""' (click)="getPicture()">Cargar Imagen
+                    <span>
+                        <img src="assets/png/wmb_assets_icon_add_pciture.png" alt="">
+                    </span>
+                </button>
+                
             </ion-col>
 
             <ion-col size="12">
-                <input class="form-input" type="text" placeholder="Nombre del Chofer" [(ngModel)]="user.name" >
+                <input class="form-input" type="text" placeholder="Nombre del Chofer" [(ngModel)]="user.name">
             </ion-col>
             <ion-col size="12">
-                <input class="form-input" type="text" placeholder="Teléfono" [(ngModel)]="user.phone" >
+                <input class="form-input" type="text" placeholder="Teléfono" [(ngModel)]="user.phone">
             </ion-col>
             <ion-col size="12">
-                <input class="form-input" type="text" placeholder="Correo Electrónico" [(ngModel)]="user.email" >
+                <input class="form-input" type="text" placeholder="Correo Electrónico" [(ngModel)]="user.email">
             </ion-col>
             <ion-col size="12">
-                <button class="form-btn-save cta" (click)= "registerBusDriver()">Crear Perfil<span><img src="assets/png/wmb_assets_icon_save.png" alt=""></span> </button>
+                <button class="form-btn-save cta" (click)="registerBusDriver()">Crear Perfil
+                    <span>
+                        <img src="assets/png/wmb_assets_icon_save.png" alt="">
+                    </span>
+                </button>
             </ion-col>
             <ion-col size="12">
-                <button class="form-btn cta">Cancelar<span><img src="assets/png/wmb_assets_icon_cancel.png" alt=""></span> </button>
+                <button class="form-btn cta">Cancelar
+                    <span>
+                        <img src="assets/png/wmb_assets_icon_cancel.png" alt="">
+                    </span>
+                </button>
             </ion-col>
         </ion-row>
     </ion-grid>

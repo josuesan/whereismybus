@@ -36,7 +36,7 @@ export class AuthService {
             user.id = res.user.uid;
             try {
                 let value = await this.afs.collection("users").doc(res.user.uid).set(user);
-                return [true];
+                return [true,pass];
             } catch (error) {
                 return [false, error];
 

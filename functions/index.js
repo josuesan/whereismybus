@@ -9,8 +9,6 @@ admin.firestore().settings(settings);
 
 const cors = require('cors')({ origin: true });
 
-
-
 exports.saveLocation = functions.https.onRequest((request, response) => {
     return cors(request, response, () => {
         const lat = request.params[0].split("/")[1];
