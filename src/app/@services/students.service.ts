@@ -88,8 +88,8 @@ export class StudentsService {
     }
 
     public async getAddress(id){
-        let res = await this.afs.collection("users").ref.where("id", "==", id).get();
-        const data = res.docs[0].data() as User;
+        let res = await this.afs.collection("users").ref.doc(id).get();
+        const data = res.data() as User;
         return data;
     }
 }

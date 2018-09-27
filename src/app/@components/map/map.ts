@@ -1,34 +1,43 @@
 import { Component, Input } from '@angular/core';
-import { GeolocationService } from '../../@services';
+import { GeolocationService, AuthService, CTAService } from '../../@services';
 declare const L;
 
 @Component({
-  selector: 'app-map',
-  templateUrl: 'map.html',
-  styleUrls: ['map.scss'],
+    selector: 'app-map',
+    templateUrl: 'map.html',
+    styleUrls: ['map.scss'],
 })
 export class MapComponent {
     private latInitial = Number("10.500000");
-    private lngInitial  = Number("-66.916664");
-    constructor(private geolocationService:GeolocationService){
+    private lngInitial = Number("-66.916664");
+
+    constructor(private geolocationService: GeolocationService, private authService: AuthService, private cta: CTAService) {
 
     }
     ngOnInit() {
-        const map = L.map('map',{
-            center: [this.latInitial, this.lngInitial],
-            zoom: 13,
-        });
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        this.init();
+    }
 
-        this.geolocationService.createMap(map);  
+    async init() {
+        let currentUser = await this.authService.getCurrentUser();
+        if (currentUser != null) {
+            const map = L.map('map', {
+                center: [this.latInitial, this.lngInitial],
+                zoom: 13,
+            });
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
 
-        setTimeout(() => {
-            map.invalidateSize();
-          }, 1000);
-          
-        this.geolocationService.updateMapInfo();
+            this.geolocationService.createMap(map);
+
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 1000);
+
+            this.geolocationService.updateMapInfo(currentUser.uid);
+        }
+        else this.cta.goToLogin();
     }
 
 }

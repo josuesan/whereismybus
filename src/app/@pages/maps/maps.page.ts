@@ -6,17 +6,20 @@ import { GeolocationService, CTAService } from '../../@services';
   styleUrls: ['maps.page.scss'],
 })
 export class MapsPage {
-    public time:number = 5;
-    public distance:number =10;
-    public userType: string = "representative";
-  constructor(private geolocationService:GeolocationService, private cta:CTAService) { }
+  public time: number = 5;
+  public distance: number = 10;
+  public userType: string = "representative";
 
-  ngOnInit(){
-    this.geolocationService.obsDistanceToArrive.subscribe( res => this.distance = res);
-    this.geolocationService.obsTimeToArrive.subscribe( res => this.time = res);
+  constructor(private geolocationService: GeolocationService,
+    private cta: CTAService) { }
+
+  ngOnInit() {
+    this.geolocationService.obsDistanceToArrive.subscribe(res => this.distance = res);
+    this.geolocationService.obsTimeToArrive.subscribe(res => this.time = res);
   }
+
   goHome() {
     this.cta.goToHome();
-}
+  }
 
 }

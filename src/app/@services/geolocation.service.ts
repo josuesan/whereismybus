@@ -138,14 +138,13 @@ export class GeolocationService {
             console.error("error no selecciona ningun marcador");
             return false;
         }
-
     }
     /**
      * Get stopbus of students and marker the actual position of bus
      */
-    async updateMapInfo(){
+    async updateMapInfo(id){
         //Primero se debe buscar coordenadas de parada
-        let id = "2eJTi2lAQPT1XhCydorIKSghce93";
+        // let id = "2eJTi2lAQPT1XhCydorIKSghce93";
         await this.getStopLocationbyUser(id);
 
         //Subcribe to get all positions in real time of the bus
@@ -153,7 +152,7 @@ export class GeolocationService {
 
             const coord = values[0].payload.doc.data() as Geolocation;
             this.myMap.panTo(new L.LatLng(coord.latitude, coord.longitude));
-            this.myMap.setZoom(17);
+            // this.myMap.setZoom(17);
 
             //Create a new marker to the new position of bus
             const icon = L.icon({
@@ -188,8 +187,6 @@ export class GeolocationService {
         this.timeToArrive = Number(((response.json().routes[0].summary.duration)/60).toFixed());
         this.obsDistanceToArrive.next(this.distanceToArrive);
         this.obsTimeToArrive.next(this.timeToArrive);
-        
-
     }
     /**
      * get the stop location
