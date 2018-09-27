@@ -20,13 +20,31 @@
     <app-navbar [userType]="userType"></app-navbar>
     <div class="card-profile bg-cards">
         <ion-grid>
-            <ion-row size="12" class="box-area">
-                <p class="text texto"><span class="text legend"><strong>Tiempo estimado de llegada:</strong></span> {{time}} min.</p>
-            </ion-row>
-            
-            <ion-row size="12">
-                    <p class="text texto"><span class="text legend"><strong>Distancia estimada del autobús: </strong></span> {{distance}} m.</p>
-            </ion-row>
+            <div *ngIf="studentAtHome === false">
+                <ion-row size="12" class="box-area">
+                    <p class="text texto">
+                        <span class="text legend">
+                            <strong>Tiempo estimado de llegada:</strong>
+                        </span> {{time}} min.</p>
+                </ion-row>
+
+                <ion-row size="12">
+                    <p class="text texto">
+                        <span class="text legend">
+                            <strong>Distancia estimada del autobús: </strong>
+                        </span> {{distance}} m.</p>
+                </ion-row>
+            </div>
+
+            <div *ngIf="studentAtHome === true">
+                <ion-row size="12" class="box-area">
+                    <p class="text texto">
+                        <span class="text legend">
+                            <strong>Su representado ya llegó a la parada.</strong>
+                        </span></p>
+                </ion-row>
+            </div>
+
             <ion-row>
                 <app-map></app-map>
 

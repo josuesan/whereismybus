@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { first } from 'rxjs/operators';
-import { Geolocation } from '../#interfaces';
+import { Geolocation,Student } from '../#interfaces';
 
 import { StudentsService } from "./students.service";
 import { ApiService } from './api.service';
@@ -12,20 +12,22 @@ import { BehaviorSubject } from 'rxjs';
 declare const L;
 @Injectable()
 export class GeolocationService {
-    
+
     private myMap;
-    private latLocation:number=0;
-    private lngLocation:number=0;
-    private latStop ="10.5000000";
-    private lngStop ="-66.916664";
-    private timeToArrive:number;
-    private distanceToArrive:number;
+    private latLocation: number = 0;
+    private lngLocation: number = 0;
+    private latStop = "10.5000000";
+    private lngStop = "-66.916664";
+    private timeToArrive: number;
+    private distanceToArrive: number;
+    private stateActual: string;
     private oldMarkerBus;
     private stopMarker;
     public obsDistanceToArrive = new BehaviorSubject<any>(this.distanceToArrive);
     public obsTimeToArrive = new BehaviorSubject<any>(this.timeToArrive);
+    public obsStateStudent = new BehaviorSubject<any>(this.stateActual);
 
-    constructor(private afs: AngularFirestore, private apiService:ApiService, private studentService: StudentsService) {}
+    constructor(private afs: AngularFirestore, private apiService: ApiService, private studentService: StudentsService) { }
 
     /**
      * Get the last current position of a bus
@@ -44,8 +46,8 @@ export class GeolocationService {
     /**
      * Get the last 20 positions of a bus (observable mode)
      */
-    public  getObsPositions(){
-        return  this.afs.collection("location", ref => ref.orderBy("createdAt","desc").limit(20)).snapshotChanges();
+    public getObsPositions() {
+        return this.afs.collection("location", ref => ref.orderBy("createdAt", "desc").limit(20)).snapshotChanges();
     }
     /**
      * Set Data of a map in myMapp
@@ -100,8 +102,6 @@ export class GeolocationService {
     showPosition(position) {
         this.latLocation = position.coords.latitude;
         this.lngLocation = position.coords.longitude;
-        console.log(this.latLocation);
-        console.log(this.lngLocation);
     }
     /**
      * Save coordinates of a devices in BD
@@ -109,7 +109,7 @@ export class GeolocationService {
     saveActualLocation() {
         let result = this.actualLocation();
         //Aqui guarda esta localizacion en la bd
-        if (result){
+        if (result) {
             return this.studentService.saveLocationStudent(this.latLocation, this.lngLocation).then(() => {
                 return true;
             }).catch((err) => {
@@ -118,7 +118,7 @@ export class GeolocationService {
             });
         }
         else return false;
-        
+
 
     }
     /**
@@ -134,7 +134,7 @@ export class GeolocationService {
                 return false;
             });
         }
-        else{
+        else {
             console.error("error no selecciona ningun marcador");
             return false;
         }
@@ -142,72 +142,78 @@ export class GeolocationService {
     /**
      * Get stopbus of students and marker the actual position of bus
      */
-    async updateMapInfo(id){
+    async updateMapInfo(idUser, idStudent) {
         //Primero se debe buscar coordenadas de parada
         // let id = "2eJTi2lAQPT1XhCydorIKSghce93";
-        await this.getStopLocationbyUser(id);
+        await this.getStopLocationbyUser(idUser, idStudent);
 
         //Subcribe to get all positions in real time of the bus
-       this.getObsPositions().subscribe( values =>{
+        this.getObsPositions().subscribe(values => {
+            if (this.stateActual === "En el transporte") {
+                const coord = values[0].payload.doc.data() as Geolocation;
+                this.myMap.panTo(new L.LatLng(coord.latitude, coord.longitude));
+                // this.myMap.setZoom(17);
 
-            const coord = values[0].payload.doc.data() as Geolocation;
-            this.myMap.panTo(new L.LatLng(coord.latitude, coord.longitude));
-            // this.myMap.setZoom(17);
+                //Create a new marker to the new position of bus
+                const icon = L.icon({
+                    iconUrl: "assets/marker-icon.png",
+                    shadowUrl: "assets/marker-shadow.png"
+                });
+                if (this.oldMarkerBus != undefined) {
+                    // console.log("borrando");
+                    this.myMap.removeLayer(this.oldMarkerBus);
+                }
 
-            //Create a new marker to the new position of bus
-            const icon = L.icon({
-                iconUrl: "assets/marker-icon.png",
-                shadowUrl: "assets/marker-shadow.png"
-            });
-            if(this.oldMarkerBus != undefined){
-                console.log("borrando");
-                this.myMap.removeLayer(this.oldMarkerBus);
+                const marker = L.marker(new L.LatLng(coord.latitude, coord.longitude), {
+                    draggable: false,
+                    icon
+                }).addTo(this.myMap);
+                this.oldMarkerBus = marker;
+
+                // Get the time and distance of the bus to respect stop
+                this.getAproxTime(coord.latitude, coord.longitude);
             }
-            
-            const marker = L.marker(new L.LatLng(coord.latitude, coord.longitude), {
-                draggable: false,
-                icon
-            }).addTo(this.myMap);
-            this.oldMarkerBus = marker;
-            
-            // Get the time and distance of the bus to respect stop
-            this.getAproxTime(coord.latitude, coord.longitude);   
-        })
-        
+        });
+
     }
     /**
      * Get the distance and duration to arrive
      * @param latBus 
      * @param lngBus 
      */
-    async getAproxTime(latBus,lngBus){
+    async getAproxTime(latBus, lngBus) {
         let url = `&coordinates=${lngBus},${latBus}|${this.lngStop},${this.latStop}&profile=driving-car&preference=shortest`;
-        let response= await this.apiService.get(url).toPromise();
+        let response = await this.apiService.get(url).toPromise();
         this.distanceToArrive = response.json().routes[0].summary.distance;
-        this.timeToArrive = Number(((response.json().routes[0].summary.duration)/60).toFixed());
+        this.timeToArrive = Number(((response.json().routes[0].summary.duration) / 60).toFixed());
         this.obsDistanceToArrive.next(this.distanceToArrive);
         this.obsTimeToArrive.next(this.timeToArrive);
     }
     /**
      * get the stop location
      */
-    async getStopLocationbyUser(id){
-        let data = await this.studentService.getAddress(id);
-        this.latStop= data.lat;
-        this.lngStop= data.long;
+    async getStopLocationbyUser(idUser, idStudent) {
+        this.studentService.getObsStudent(idStudent).subscribe((value) => {
+            this.stateActual = (value.payload.data() as Student).status;
+            this.obsStateStudent.next(this.stateActual);
+        });
+
+        let data = await this.studentService.getAddress(idUser);
+        this.latStop = data.lat;
+        this.lngStop = data.long;
 
         //Create a new marker to the new position of bus
         const icon = L.icon({
             iconUrl: "assets/marker-icon-stop.png",
             shadowUrl: "assets/marker-shadow.png"
         });
-        
+
         const marker = L.marker(new L.LatLng(this.latStop, this.lngStop), {
             draggable: false,
             icon
         }).addTo(this.myMap);
         this.stopMarker = marker;
     }
-    
+
 
 }
