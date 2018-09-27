@@ -149,7 +149,7 @@ export class GeolocationService {
         await this.getStopLocationbyUser(id);
 
         //Subcribe to get all positions in real time of the bus
-        this.getObsPositions().subscribe( values =>{
+       this.getObsPositions().subscribe( values =>{
 
             const coord = values[0].payload.doc.data() as Geolocation;
             this.myMap.panTo(new L.LatLng(coord.latitude, coord.longitude));
@@ -174,6 +174,7 @@ export class GeolocationService {
             // Get the time and distance of the bus to respect stop
             this.getAproxTime(coord.latitude, coord.longitude);   
         })
+        
     }
     /**
      * Get the distance and duration to arrive
