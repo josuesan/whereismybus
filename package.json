@@ -48,6 +48,7 @@
     "core-js": "^2.5.3",
     "emailjs-com": "^2.2.4",
     "firebase": "^5.3.0",
+    "firebase-functions": "^2.0.5",
     "mapbox-gl": "^0.48.0",
     "promise-polyfill": "^8.1.0",
     "rxjs": "^6.3.2",
