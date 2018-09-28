@@ -42,8 +42,7 @@
             </ion-col>
             <ion-col size="12">
 
-                <ion-select #S class="form-select" [(ngModel)]="status" placeholder="Representado" [interfaceOptions]="customPopoverOptions"
-                    interface="popover" (ionChange)="onChangeStudent(S.value)">
+                <ion-select #S class="form-select" placeholder="Representado" interface="popover" (ionChange)="onChangeStudent(S.value)">
                     <ion-select-option *ngFor="let student of students" [value]="student.id">{{student.name}}</ion-select-option>
                 </ion-select>
 
@@ -73,3 +72,4 @@
 
     <ion-spinner *ngIf="loading === true" name="crescent" class="spin"></ion-spinner>
 </ion-content>
+
