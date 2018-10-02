@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GeolocationService, AuthService, CTAService } from '../../@services';
-import { User, Student } from "../../#interfaces";
+import { User, Student} from "../../#interfaces";
 declare const L;
 
 @Component({
