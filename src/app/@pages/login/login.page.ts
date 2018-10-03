@@ -27,7 +27,10 @@ export class LoginPage {
           this.loading = false;
           this.cta.goToHome();
         }
-        else {this.notificationService.createTosty(result[1].message, false);} 
+        else {
+          this.notificationService.createTosty(result[1].message, false);
+          this.loading = false;
+        } 
       });
     }
   }
