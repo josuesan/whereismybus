@@ -20,6 +20,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
+              "src/assets/worker.js", 
               {
                 "glob": "**/*",
                 "input": "src/assets",
@@ -49,9 +50,6 @@
               {
               "input": "src/assets/leaflet/leaflet.js"
               }
-              /*{
-              "input": "src/assets/leaflet/leaflet-routing-machine.min.js"
-              }*/
           ]
           },
           "configurations": {

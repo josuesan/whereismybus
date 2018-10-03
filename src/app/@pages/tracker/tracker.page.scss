@@ -1,0 +1,51 @@
+/*Colors*/
+$orange: #ffa403;
+$black: #332c24;
+$red: #e24905;
+$greenD: #5abe4f;
+$gray: #a2a2a2;
+
+
+.header{
+    height: 60px;
+    background-color: $orange;
+
+    .title{
+        color: white;
+    }
+    
+}
+.tracker-btn{
+    color: red;
+    font-size: 110px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.tracker-btn.active{
+    color: green;
+    font-size: 110px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.complete-page{
+    position: relative;
+    height: 75vh;
+    
+}
+.info-text{
+    color: black;
+    font-size: 24px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-70%);
+    width: 100%;
+    text-align: center;
+}
+.bg-gray{
+    background-color: #efefef;
+}

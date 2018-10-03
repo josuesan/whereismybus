@@ -1,0 +1,31 @@
+<ion-header>
+    <div class="header">
+        <ion-grid class="no-pd max-h">
+            <ion-row align-items-center class="max-h">
+                <ion-col size="2" class="no-pd">
+                    <img class="btn-back" src="assets/png/wmb_assets_icon_back_arrow.png" alt="" (click)="goHome()">
+                </ion-col>
+                <ion-col size="8" class="no-pd">
+                    <ion-title class="title">Rastreo contigencia</ion-title>
+                </ion-col>
+                <ion-col size="2" class="no-pd">
+                    <img class="logo-header" src="assets/svg/wmb_assets_icon_logo_header.svg" alt="">
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-header>
+
+<ion-content class="bg-gray">
+    <app-navbar [userType]="userType"></app-navbar>
+    <ion-grid class="complete-page">
+        <ion-row class="complete-page">
+            <ion-col size="12" class="complete-page">
+                <ion-icon name="power" *ngIf='actived == false' class="tracker-btn" (click)="active()"></ion-icon>
+                <ion-icon name="power" *ngIf='actived == true' class="tracker-btn active" (click)="deactive()"></ion-icon>
+                <p *ngIf='actived == false' class="info-text">Activar rastreo de contingencia</p>
+                <p *ngIf='actived == true' class="info-text">Desactivar rastreo de contingencia</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
