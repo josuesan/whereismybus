@@ -125,4 +125,3 @@ exports.exampleRuta = functions.https.onRequest((request, response) => {
             .catch((err) => console.error(err));
     });
 })
-
