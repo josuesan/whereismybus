@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class TrackerPage {
     public userType: string = "busDriver";
     public actived:boolean = false;
-    public lat;
-    public lon;
+    public lat:number =0;
+    public lon:number =0;
     private interval;
     private worker;
     constructor(
@@ -57,9 +57,7 @@ export class TrackerPage {
     async showPosition(position) {
         console.log(position.coords.latitude);
         console.log(position.coords.longitude);
-        this.lat = position.coords.latitude;
-        this.lon = position.coords.longitude;
-        var res = await fetch("https://us-central1-whereismybus-a7ffe.cloudfunctions.net/saveLocation/"+this.lat+"/"+this.lon)
+        var res = await fetch("https://us-central1-whereismybus-a7ffe.cloudfunctions.net/saveLocation/"+position.coords.latitude+"/"+position.coords.longitude)
         var response = await res.json();
     }
 
