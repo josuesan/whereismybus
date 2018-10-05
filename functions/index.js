@@ -34,6 +34,30 @@ exports.saveLocation = functions.https.onRequest((request, response) => {
     });
 });
 
+exports.saveLocation2 = functions.https.onRequest((request, response) => {
+    return cors(request, response, () => {
+        const lat = req.params[0].split("/")[0];
+        const lng= req.params[0].split("/")[1];
+        return admin.firestore()
+            .collection("location")
+            .add({
+                latitude: lat,
+                longitude: lng,
+                createdAt: admin.firestore.FieldValue.serverTimestamp(),
+            })
+            .then((docRef) => {
+                const code = {
+                    code: 200,
+                    status: "complete"
+                }
+                return response.status(200).set('Content-Type', 'application/json').send(code);
+            })
+            .catch((err) => {
+                return response.status(500).send(err)
+            })
+    });
+});
+
 //Limpiar historial de messages
 exports.cleanMessageHistory = functions.https.onRequest((request, response) => {
 

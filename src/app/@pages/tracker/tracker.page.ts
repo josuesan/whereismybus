@@ -55,9 +55,7 @@ export class TrackerPage {
         //clearInterval(this.interval);
     }
     async showPosition(position) {
-        console.log(position.coords.latitude);
-        console.log(position.coords.longitude);
-        var res = await fetch("https://us-central1-whereismybus-a7ffe.cloudfunctions.net/saveLocation/"+position.coords.latitude+"/"+position.coords.longitude)
+        var res = await fetch("https://us-central1-whereismybus-a7ffe.cloudfunctions.net/saveLocation2/"+position.coords.latitude+"/"+position.coords.longitude)
         var response = await res.json();
     }
 
