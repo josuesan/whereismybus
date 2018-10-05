@@ -14,6 +14,7 @@ exports.saveLocation = functions.https.onRequest((request, response) => {
         const message = request.body.message.split("&");
         const lat = message[0].split("=")[1];
         const lng= message[1].split("=")[1];
+        
         return admin.firestore()
             .collection("location")
             .add({
