@@ -1,4 +1,7 @@
+//Clouds Functions por Firebase SDK para crear funciones en la nube y desencadenantes de configuración.
 const functions = require('firebase-functions');
+
+//SDK del administrador de Firebase para acceder a la base de datos Cloud Firestore de Firebase.
 const admin = require('firebase-admin');
 
 //Firebase Init
@@ -34,6 +37,7 @@ exports.saveLocation = functions.https.onRequest((request, response) => {
             })
     });
 });
+
 
 //Contingencia
 exports.saveLocation2 = functions.https.onRequest((request, response) => {
