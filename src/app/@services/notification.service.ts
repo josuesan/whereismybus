@@ -27,6 +27,13 @@ export class NotificationService {
     }
 
     /**
+     * Function to get all messages (Observable mode)
+     */
+    public getObsMessages(){
+        return this.afs.collection("messages", ref => ref.orderBy("createdAt", "desc")).snapshotChanges();
+    }
+
+    /**
      * Function to save a new message 
      * @param student 
      */

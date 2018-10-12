@@ -56,6 +56,8 @@ export class GeolocationService {
     createMap(map) {
         this.myMap = map;
     }
+
+    
     /**
      * Add Market by a click in map
      * @param e 
