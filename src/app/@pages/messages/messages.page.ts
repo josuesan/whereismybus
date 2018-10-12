@@ -30,6 +30,7 @@ export class MessagesPage {
         let i = 1;
         if (tam === 0) {
           this.ready = true;
+          this.messages = [];
           return;
         }
         data.forEach((doc) => {
@@ -50,11 +51,12 @@ export class MessagesPage {
       
       this.messageService.getObsMessages().subscribe((data) => {
         this.ready = false;
-        let msj = []
+        let msj = [];
         const tam = data.length;
         let i = 1;
         if (tam === 0) {
           this.ready = true;
+          this.messages = [];
           return;
         }
         data.forEach((doc) => {
