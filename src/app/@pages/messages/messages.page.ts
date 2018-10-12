@@ -61,12 +61,19 @@ export class MessagesPage {
     let currentUser = await this.authService.getCurrentUser();
     if (currentUser != null) {
       this.message.driver = currentUser.uid;
+      console.log(this.message);
+      if(this.message.message === "" || this.message.message === undefined || this.message.message === null){
+        this.messageService.createTosty("No se puede enviar mensajes en blanco",false);
+      }
+      else{
+        this.messageService.addNewMessage(this.message).then((docRef) => {
+          console.log("Mensaje agregado");
+          this.messageService.createTosty("Message Sent.",true);
+          this.cta.goToHome();
+        }).catch((err) => this.messageService.createTosty(err.message, false));
+      }
       
-      this.messageService.addNewMessage(this.message).then((docRef) => {
-        console.log("Mensaje agregado");
-        this.messageService.createTosty("Message Sent.",true);
-        this.cta.goToHome();
-      }).catch((err) => this.messageService.createTosty(err.message, false));
+      
     }
     else this.cta.goToLogin();
   }
