@@ -60,7 +60,7 @@ export class MessagesPage {
           return;
         }
         data.forEach((doc) => {
-          var message = doc.payload.doc.data()as Notification;
+          var message = doc.payload.doc.data() as Notification;
           this.authService.getUserData(message.driver).then((docUser) => {
             if (docUser.exists) {
               var driver = docUser.data() as User;
