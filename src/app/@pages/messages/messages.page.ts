@@ -89,15 +89,13 @@ export class MessagesPage {
     let currentUser = await this.authService.getCurrentUser();
     if (currentUser != null) {
       this.message.driver = currentUser.uid;
-      console.log(this.message);
       if (this.message.message === "" || this.message.message === undefined || this.message.message === null) {
         this.messageService.createTosty("No se puede enviar mensajes en blanco", false);
       }
       else {
         this.messageService.addNewMessage(this.message).then((docRef) => {
-          console.log("Mensaje agregado");
           this.messageService.createTosty("Message Sent.", true);
-          this.cta.goToHome();
+          this.cta.redirect("messages");
         }).catch((err) => this.messageService.createTosty(err.message, false));
       }
 
@@ -134,7 +132,7 @@ export class MessagesPage {
   setPlaceholder(event) {
     var target = event.target || event.srcElement || event.currentTarget;
     if (target.innerHTML == "") target.innerHTML = "Escribe un mensaje";
-
+    else this.message.message = target.innerHTML ;
   }
   async init() {
     var currentUser = await this.authService.getCurrentUser();

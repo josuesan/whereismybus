@@ -20,7 +20,7 @@ import {firebaseConfig} from './firebase.config';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx'
 import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -41,7 +41,6 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
     ImagePicker,
     StatusBar,
     SplashScreen,
-    Keyboard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
