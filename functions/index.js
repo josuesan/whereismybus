@@ -68,7 +68,7 @@ exports.saveLocation2 = functions.https.onRequest((request, response) => {
 //Limpiar historial de messages
 exports.cleanMessageHistory = functions.https.onRequest((request, response) => {
 
-    return cors(request, response, () => {
+    return cors(request, response, () => { 
         admin.firestore()
             .collection("messages")
             .get()
