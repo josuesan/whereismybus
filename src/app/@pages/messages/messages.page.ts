@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, ComponentRef, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component} from '@angular/core';
 import { CTAService, AuthService, NotificationService } from '../../@services';
 import { Notification, User } from "../../#interfaces";
 
@@ -15,7 +15,6 @@ export class MessagesPage {
   public driver = {} as User;
   public messages: any[];
   public existMessages = -1;
-  // public cpRef: ComponentRef<MessagesPage> = MessagesPage;
   constructor(private cta: CTAService, private authService: AuthService, private messageService: NotificationService) { }
 
   ngOnInit() {
@@ -121,7 +120,6 @@ export class MessagesPage {
     this.cta.goToHome();
   }
   public redirect(ruta: string) {
-    // this.cpRef.destroy();
     this.cta.redirect(ruta);
   }
 
@@ -131,8 +129,13 @@ export class MessagesPage {
   }
   setPlaceholder(event) {
     var target = event.target || event.srcElement || event.currentTarget;
-    if (target.innerHTML == "") target.innerHTML = "Escribe un mensaje";
-    else this.message.message = target.innerHTML ;
+    if (target.innerHTML == "") {
+      target.innerHTML = "Escribe un mensaje";
+      this.message.message = "";
+    }
+    else {
+      this.message.message = target.innerHTML ;
+    }
   }
   async init() {
     var currentUser = await this.authService.getCurrentUser();
